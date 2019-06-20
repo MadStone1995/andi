@@ -1,0 +1,91 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/odinvestment/odinvestment",
+    "pages/model/wantShop/wantShop",
+    "pages/model/Operate/Operate",
+    "pages/model/Purchase/Purchase",
+    "pages/model/Creditworthiness/Creditworthiness",
+    "pages/model/Lovelearning/Lovelearning",
+    "pages/model/BigData/BigData",
+    "pages/shop/shop",
+    "pages/model/authorization/authorization",
+    "pages/my/index/index",
+    "pages/oddata/index/index",
+    "pages/oddata/cityInfo/cityInfo",
+    "pages/oddata/addressInfo/addressInfo",
+    "pages/oddata/categoryInfo/categoryInfo",
+    "pages/oddata/brandInfo/brandInfo",
+    "pages/oddata/companyInfo/companyInfo",
+    "pages/oddata/merchantInfo/merchantInfo",
+    "pages/my/qiandao/qiandao",
+    "pages/my/myyue/myyue",
+    "pages/my/myintegral/myintegral",
+    "pages/ppdetail/ppdetail",
+    "pages/my/mall/mall",
+    "pages/my/register/register",
+    "pages/my/addAddress/addAddress",
+    "pages/my/address/address",
+    "pages/my/wzjf/wzjf",
+    "pages/my/sjrz/sjrz",
+    "pages/my/helpcenter/helpcenter",
+    "pages/my/about/about",
+    "pages/my/release/release",
+    "pages/my/collections/collections",
+    "pages/richtext/richtext",
+    "pages/newsdetail/newsdetail",
+    "pages/richMenu/richMenu",
+    "pages/model/menuDetail/menuDetail",
+    "pages/model/menuList/menuList",
+    "pages/themeDetail/themeDetail",
+    "pages/oddata/companydata/companydata"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#496DAA",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/navbar/home1.png",
+        "selectedIconPath": "/images/navbar/home2.png"
+      },
+      {
+        "pagePath": "pages/oddata/index/index",
+        "text": "数据中心",
+        "iconPath": "/images/navbar/gwc1.png",
+        "selectedIconPath": "/images/navbar/gwc2.png"
+      },
+      {
+        "pagePath": "pages/odinvestment/odinvestment",
+        "text": "安心加盟",
+        "iconPath": "/images/navbar/cd1.png",
+        "selectedIconPath": "/images/navbar/cd2.png"
+      },
+      {
+        "pagePath": "pages/my/index/index",
+        "text": "个人中心",
+        "iconPath": "/images/navbar/my1.png",
+        "selectedIconPath": "/images/navbar/my2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "networkTimeout": {
+    "request": 180000
+  }
+}

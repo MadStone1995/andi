@@ -1,0 +1,104 @@
+<!--安心加盟-->
+<view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='notice'>
+  <view class='notice-info'>公告：
+  <view class=''>
+    <view>1，告知意向加盟者--本社区提供数据均可保证真实性，但不保证时效性和完整性。</view>
+    <view>2，告知品牌公司--入驻本社区此栏目均为免费，请联系客服上传相关资料，请确保所有数据的真实性。</view>
+    <view>3，排列顺序为入驻时间的先后顺序</view>
+  </view>
+ </view>
+</view>
+<view class='searchBox'>
+  <input class='searchBox-input' bindinput='getBrand' bindconfirm="getListInfo" placeholder-style='color:#fff;' placeholder='输入关键词搜索具体品牌或者通过以下条件筛选寻找意向品牌' value='{{shopName}}'></input>
+</view>
+<view class='screenList '>
+  <view class='screenList-item'>
+    <view class='screenList-itemtotal'>餐饮分类:</view>
+     <view class="{{moreCy ? 'screen-type2':'screen-type'}} ">
+      <block wx:for="{{typeList.classify}}" wx:key>
+        <view class="screen-typeItem {{cytype == item ? 'active':''}}" data-cytype='{{item}}'  bindtap='choosecytype'>{{item}}</view>
+      </block>
+    </view>
+    <view class='imgdiv' bindtap='chooseMoreCy' >
+    <image class="{{moreCy ? 'funList-jt2':'funList-jt'}}" src='/images/my/jt.png'></image>
+    </view>
+  </view>
+  <view class='screenList-item'>
+    <view class='screenList-itemtotal'>投资金额:</view>
+    <view class="{{moreJe ? 'screen-type2':'screen-type'}}" >
+      <block wx:for="{{typeList.cost}}" wx:key>
+        <view class="screen-typeItem {{zscost == item ? 'active':''}}" data-tztype='{{item}}'  bindtap='choosetztype'>{{item}}</view>
+      </block>
+    </view>
+      <view class='imgdiv' bindtap='chooseMoreJe' >
+    <image class="{{moreJe ? 'funList-jt2':'funList-jt'}}" src='/images/my/jt.png'></image>
+    </view>
+  </view>
+   <view class='screenList-item'>
+    <view class='screenList-itemtotal'>店铺规模:</view>
+    <view class="{{moreGm ? 'screen-type2':'screen-type'}}">
+      <block wx:for="{{typeList.scale}}" wx:key>
+        <view class="screen-typeItem {{zsscale == item ? 'active':''}}" data-gmtype='{{item}}'  bindtap='choosetgmype' >{{item}}</view>
+      </block>
+    </view>
+    <view class='imgdiv' bindtap='chooseMoreGm' >
+    <image class="{{moreGm ? 'funList-jt2':'funList-jt'}}" src='/images/my/jt.png'></image>
+    </view>
+  </view>
+  <view class='screenList-item'>
+    <view class='screenList-itemtotal'>招商区域:</view>
+    <view class='screen-type'>
+     <picker bindchange="bindPickerChange" value="{{index}}" range="{{typeList.area}}">
+      <view class="picker">
+        <view class='screen-area'>{{zsarea || "全部"}}</view>
+      </view>
+      <view class='screen-areaselect'>
+        <image src='/images/xiangxia.png' class='select-img'></image>
+      </view>
+    </picker>
+    </view>
+  </view>
+  <view class='bline'></view>
+  <view class='businessList'>
+  <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:700rpx;" class='shopInfo'>
+     <block wx:for="{{shopList}}" wx:key>
+      <view class='businessList-item'>
+        <image class='business-img' src="{{item.url || '/images/zw.jpg'}}"></image>
+        <view class='business-name'>{{item.brand_name}}</view>
+        <view class='business-salenum1'>上月总销量:{{item.last_sales}}</view>
+        <view class='business-salenum1'>上月门店平均销量：{{item.avg}}</view>
+        <view class='business-salenum2'>线上平台店铺数:{{item.meituan + item.eleme}}[美:{{item.meituan}}  饿:{{item.eleme}} ]</view>
+        <view class='business-star'>
+          <view class='business-startotal'>诚信指数：</view>
+          <image src='/images/star.png' wx:if="{{1 <= item.exponent}}" class='star-img'></image>
+           <image src='/images/star.png' wx:if="{{2 <= item.exponent}}" class='star-img'></image>
+            <image src='/images/star.png' wx:if="{{3 <= item.exponent}}" class='star-img'></image>
+             <image src='/images/star.png' wx:if="{{4 <= item.exponent}}" class='star-img'></image>
+              <image src='/images/star.png' wx:if="{{5 <= item.exponent}}" class='star-img'></image>
+        </view>
+        <view class='lookmore' data-shopid='{{item}}' bindtap="{{item.state ? 'lookmore' : ''}}">查看详情</view>
+      </view>
+    </block>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+   
+  </view>
+</view>
+<button open-type='contact' class='buttonItem'>
+  <view class='funList-item'>
+    <image src='/images/kefuinfo.png' class='kefuImg'></image>
+    <view class='kefutext'>在线客服</view>
+  </view>
+</button>

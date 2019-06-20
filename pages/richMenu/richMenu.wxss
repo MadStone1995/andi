@@ -1,0 +1,232 @@
+@import "/common/lib/weui.wxss";
+@import "/common/assets/iconfont.wxss";
+
+.wrapper {
+  width:100%;
+float:left;
+  padding: 5px;
+}
+
+.iconfont {
+  display: inline-block;
+  padding: 8px 8px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.page-body{
+  margin-top: 20rpx;
+  margin-bottom: 100rpx;
+}
+.toolbar {
+  box-sizing: border-box;
+  /* border: 1px solid #ccc; */
+  border-bottom: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+
+.ql-container {
+  box-sizing: border-box;
+  padding: 12px 15px;
+  width: 100%;
+  min-height: 30vh;
+  height: auto;
+  /* border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc; */
+  background: #fff;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ql-active {
+  color: #06c;
+}
+.total{
+  width: 710rpx;
+  padding:0 20rpx;
+  min-height:80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 20rpx;
+  font-size: 30rpx;
+  border:1rpx #eee solid;
+  box-sizing: border-box;
+}
+.textInfo{
+  width: 710rpx;
+  padding: 20rpx;
+  margin: 0 20rpx;
+  font-size: 28rpx;
+  border:1rpx #eee solid;
+  box-sizing: border-box;
+}
+.imgList{
+  float: left;
+  width: 710rpx;
+  margin: 0 20rpx;
+}
+.imgtotal{
+  font-size: 30rpx;
+  color: #333;
+  margin: 20rpx 0;
+}
+.imgItem{
+  float: left;
+   width: 220rpx;
+  height: 220rpx;
+  margin:9rpx;
+  border-radius: 15rpx;
+}
+.uploadImg{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius:15rpx;
+}
+.addImg{
+  float: left;
+  width: 220rpx;
+  height: 220rpx;
+  margin: 10rpx 10rpx;
+  line-height: 220rpx;
+  text-align: center;
+  font-size: 60rpx;
+  color: #bbb;
+  font-weight: bold;
+  border: 1rpx #bbb solid;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+}
+.inputItem{
+  width: 100%;
+  height: 80rpx;
+ 
+}
+.inputItem-total{
+  float: left;
+  width:165rpx;
+  padding:0 20rpx;
+  min-height:80rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  border-right: none;
+  color:#333;
+}
+.inputItem-text{
+  float: left;
+  width: 510rpx;
+  padding: 0 20rpx;
+  margin-right: 20rpx;
+  color:#333;
+  min-height:80rpx;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+}
+.ljview{
+  float: left;
+  color:#333;
+  width: 38rpx;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.inputItem-text2{
+  float: left;
+  width: 200rpx;
+  padding: 0 10rpx;
+  margin:0 25rpx;
+  color:#333;
+  min-height:80rpx;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+.inputItem-textarea{
+  float:left;
+  width:470rpx;
+  border:#eee 1rpx solid;
+  padding:10rpx 20rpx;
+  font-size:30rpx;
+}
+.subbtn{
+  position:fixed;
+  width:710rpx;
+  height:80rpx;
+  background:#D83B7F;
+  bottom:20rpx;
+  margin-left:20rpx;
+  color:#fff;
+  text-align:center;
+  line-height:80rpx;
+  font-size:30rpx;
+}
+.ingredientsList-item{
+  width: 650rpx;
+  margin: 0 20rpx;
+}
+.ingredientsList{
+}
+.itemInfo{
+  float: left;
+  width: 300rpx;
+  height: 80rpx;
+  border:1rpx #eee solid;
+  box-sizing: border-box;
+  min-height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  padding: 0 20rpx;
+}
+.addItem{
+  float: left;
+  width: 45rpx;
+  height: 45rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  color: #D83B7F;
+  line-height: 33rpx;
+  text-align: center;
+  font-size: 35rpx;
+  border-radius: 50%;
+  margin: 17rpx;
+}
+.ingredientsList-total{
+  float: left;
+  width: 710rpx;
+  height: 65rpx;
+  margin:5rpx 20rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.addVideo{
+  margin: 0 225rpx;
+  width: 300rpx;
+  height: 60rpx;
+  border: 1rpx #eee solid;
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+.spInfo{
+  width: 600rpx;
+  height: 450rpx;
+  margin: 0 75rpx;
+}

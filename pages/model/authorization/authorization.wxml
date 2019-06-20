@@ -1,0 +1,32 @@
+<!--pages/my/my.wxml-->
+<!-- <view class='banner' style="background-image: url('/images/sq-banner2.png') no-repeat;" ></view> -->
+<image class='banner' src='/images/sq-banner2.png'></image>
+<image class='banner2' wx:if="{{dpType == 0}}" src='https://xcx.od888.cn/static/fixed/images/sq-eleme.png'></image>
+<image class='banner2' wx:if="{{dpType == 1}}" src='https://xcx.od888.cn/static/fixed/images/sq-meituan.png'></image>
+<view class='dpsq'>店铺授权</view>
+<view class='dpInfo' wx:if="{{dpType == 0 || dpType == 5}}">
+  <view class='dptotal'>饿了么店铺信息</view>
+  <input class='' placeholder='店铺账号' value='{{elmInfo.platform_username}}' bindinput="inputName2">{{elmInfo.platform_username}}</input>
+  <input class='' placeholder='店铺密码' value='{{elmInfo.platform_password}}' password='true' bindinput="inputPsd2">{{elmInfo.platform_password}}</input>
+  <input class='' placeholder='手机号' value='{{elmInfo.phone_number}}' type='number' bindinput="inputPhone2">{{elmInfo.phone_number}}</input>
+  <view class='sqzt' wx:if="{{sqState == 0}}">审核状态: 申请中</view>
+  <view class='sqzt' wx:if="{{sqState == 1}}">审核状态:成功</view>
+  <view class='sqzt' wx:if="{{sqState == -2}}">审核状态: 未绑定</view>
+  <view class='sqzt' wx:if="{{sqState == -1}}">审核状态: 申请失败</view>
+  <view class='sqzt' wx:if="{{elmInfo.audit_at}}">审核时间: {{elmInfo.audit_at}}</view>
+  <view class='sqzt' wx:if="{{elmInfo.audit_content}}">审核说明: {{elmInfo.audit_content}}</view>
+  <view class=''>
+  </view>
+  <button class='btncss' bindtap='bindingElm'>确认绑定</button>
+</view>
+<view class='dpInfo' wx:if="{{dpType == 1 || dpType == 5}}">
+  <view class='dptotal'>绑定美团店铺信息</view>
+  <input class='' value='{{mtInfo.platform_username}}' placeholder='店铺账号' bindinput="inputName">{{mtInfo.platform_username}}</input>
+  <input class='' value='{{mtInfo.platform_password}}' password='true' bindinput="inputPsd" placeholder='店铺密码'>{{mtInfo.platform_password}}</input>
+  <input class='' type='number' value='{{mtInfo.phone_number}}' bindinput="inputPhone" placeholder='手机号'>{{mtInfo.phone_number}}</input>
+  <view class='sqzt' wx:if="{{sqState == 0}}">审核状态: 申请中</view>
+  <view class='sqzt' wx:if="{{sqState == 1}}">审核状态:成功</view>
+  <view class='sqzt' wx:if="{{sqState == -2}}">审核状态: 未绑定</view>
+  <view class='sqzt' wx:if="{{sqState == -1}}">审核状态: 申请失败</view>
+  <button class='btncss' bindtap='bindingMt'>确认绑定</button>
+</view>

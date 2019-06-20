@@ -1,0 +1,306 @@
+<!--外卖运营-->
+<view class='bannerView'>
+  <image src='https://xcx.od888.cn/static/fixed/images/wmbanner.png' class='bannerImg'></image>
+</view>
+<view class='chooseList'>
+  <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>平台数据</view>
+   <view class="chooseList-item2 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>天气预报</view>
+  <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>店铺诊断</view>
+
+</view>
+<!-- 平台数据 -->
+<view class="platform" wx:if="{{chooseItem == 0}}">
+  <view class='platform-head'>
+    <view class='head-left'>
+      {{ptDataText1}}
+      <image class='head-leftimg' src='/images/bz.png'></image>
+    </view>
+    <view class='head-right'>
+      <view class='sanjiao1'></view>
+      <view class='sanjiao2'></view>
+      <view class='right-text1' bindtap='changePtType'>{{ptDataText2}}</view>
+      <view class='right-text2' bindtap='changePtType'>点击切换</view>
+    </view>
+  </view>
+  <!-- 差评预警 -->
+  <view class='animated bounceInLeft' wx:if="{{ptDataType == 0}}">
+    <view class='warnInfo'>
+      <view class='warnInfo-num'>
+        未回复差评：
+        <text class='warnInfo-numtext'>{{badCommentList.length}}次</text>
+      </view>
+      <!-- <view class='newDate'>2018-10-31</view> -->
+    </view>
+    <view class='warnList'>
+      <block wx:for="{{badCommentList}}" wx:key>
+        <view class='warnList-item'>
+          <view class='item1'>
+            <view class='item1-name'>匿名用户</view>
+            <view class='item1-num'>差评一次</view>
+            <view class='item1-time'>{{item.time}}</view>
+          </view>
+          <view class='item2'>
+            <view class='item2-No'>订单编号：未知</view>
+            <view class='item2-pt' wx:if="{{item.platform == 'eleme'}}">饿了么</view>
+            <view class='item2-pt' wx:if="{{item.platform == 'meitaun'}}">美团</view>
+          </view>
+          <view class='item3'>
+            <view class='item3-info' wx:if="{{item.content==''}}">该用户未评论</view>
+            <view class='item3-info' wx:if="{{item.content!=''}}">{{item.content}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 经营日报 -->
+  <view class='animated bounceInRight' wx:if="{{ptDataType == 1}}">
+    <view class='businessData'>
+      <view class='businessData-left'>
+        <view class='left-date'>{{yesterday}} | {{week}}</view>
+        <view class='left-sumtotal'>平台实收合计：</view>
+        <view class='left-sumNum'>￥{{businessData.sum.revenue_sum_ord}}</view>
+        <view class='left-bj'>
+          <view class='left-bj1'>较昨天</view>
+          <view class="left-bj2" wx:if="{{businessData.sum.revenue_growth_sum > 0}}">+{{businessData.sum.revenue_growth_sum}}%</view>
+          <view class="left-bj2 red" wx:else>{{businessData.sum.revenue_growth_sum}}%</view>
+        </view>
+        <view class='left-bj'>
+          <view class='left-bj1'>平均客单价</view>
+          <view class='left-bj2'>￥{{businessData.sum.unit_price_sum}}</view>
+        </view>
+      </view>
+      <view class='businessData-right'>
+        <view class='right-sumtotal'>顾客实付合计：</view>
+        <view class='right-sumNum'>
+          <view class='right-sumNum1'>￥{{businessData.sum.totalsale_sum_ord}}</view>
+          <view class="right-sumNum2" wx:if="{{businessData.sum.totalsale_growth_sum > 0}}">+{{businessData.sum.totalsale_growth_sum}}%</view>
+          <view class="right-sumNum2 red" wx:else>{{businessData.sum.totalsale_growth_sum}}%</view>
+        </view>
+        <view class='right-sumtotal'>有效订单数：</view>
+        <view class='right-sumNum'>
+          <view class='right-sumNum1'>{{businessData.sum.effective_sum_ord}}单</view>
+          <view class="right-sumNum2" wx:if="{{businessData.sum.effective_growth_ord > 0}}">+{{businessData.sum.effective_growth_sum}}%</view>
+          <view class="right-sumNum2 red" wx:else>{{businessData.sum.effective_growth_sum}}%</view>
+        </view>
+      </view>
+    </view>
+    <view class='businessData2'>
+      <image class='ptbgImg' src='/images/ptbg.png'></image>
+      <view class='dataInfo'>
+        <view class='dataInfo-Item'>
+          <view class='dataInfo-total1'>饿了么</view>
+           <view class='nodata' wx:if="{{businessData.eleme.length == 0}}">未获取到数据</view>
+          <view class='' wx:if="{{businessData.eleme.length > 0}}">
+            <view class='dataInfo-sum'>饿了么实收</view>
+            <view class='dataInfo-sumNum'>
+              <view class='dataInfo-sumNum1'>￥{{businessData.eleme[0].revenue_ord}}</view>
+              <view class='dataInfo-sumNum2' wx:if="{{businessData.eleme[0].revenue_growth_ord > 0}}">+{{businessData.eleme[0].revenue_growth_ord}}%</view>
+              <view class='dataInfo-sumNum2 red' wx:else>{{businessData.eleme[0].revenue_growth_ord}}%</view>
+            </view>
+            <view class='dataInfo-sum'>顾客实付</view>
+            <view class='dataInfo-sumNum'>
+              <view class='dataInfo-sumNum1'>￥{{businessData.eleme[0].totalsale_ord}}</view>
+              <view class='dataInfo-sumNum2' wx:if="{{businessData.eleme[0].totalsale_growth_ord > 0}}">+{{businessData.eleme[0].totalsale_growth_ord}}%</view>
+              <view class='dataInfo-sumNum2 red' wx:else>{{businessData.eleme[0].totalsale_growth_ord}}%</view>
+            </view>
+            <view class='dataInfo-sum'>有效订单数</view>
+            <view class='dataInfo-sumNum'>
+              <view class='dataInfo-sumNum1'>{{businessData.eleme[0].effective_ord}}单</view>
+              <view class='dataInfo-sumNum2' wx:if="{{businessData.eleme[0].effective_growth_ord > 0}}">{{businessData.eleme[0].effective_growth_ord}}</view>
+              <view class='dataInfo-sumNum2 red' wx:else>{{businessData.eleme[0].effective_growth_ord}}%</view>
+            </view>
+          
+          </view>
+        </view>
+        <view class='dataInfo-Item2'>
+          <view class='dataInfo-total2'>美团</view>
+           <view class='nodata' wx:if="{{businessData.meituan.length == 0}}">未获取到数据</view>
+          <view class='' wx:if="{{businessData.meituan.length > 0}}">
+              <view class='dataInfo-sum'>美团实收</view>
+              <view class='dataInfo-sumNum'>
+                <view class='dataInfo-sumNum1'>￥{{businessData.meituan[0].revenue_ord}}</view>
+                <view class='dataInfo-sumNum3' wx:if="{{businessData.meituan[0].revenue_growth_ord > 0}}">+{{businessData.meituan[0].revenue_growth_ord}}%</view>
+                <view class='dataInfo-sumNum3 red' wx:else>{{businessData.meituan[0].revenue_growth_ord}}%</view>
+              </view>
+              <view class='dataInfo-sum'>顾客实付</view>
+              <view class='dataInfo-sumNum'>
+                <view class='dataInfo-sumNum1'>￥{{businessData.meituan[0].totalsale_ord}}</view>
+                <view class='dataInfo-sumNum3' wx:if="{{businessData.meituan[0].totalsale_growth_ord > 0}}">+{{businessData.meituan[0].totalsale_growth_ord}}%</view>
+                <view class='dataInfo-sumNum3 red' wx:else>{{businessData.meituan[0].totalsale_growth_ord}}%</view>
+              </view>
+              <view class='dataInfo-sum'>有效订单数</view>
+              <view class='dataInfo-sumNum'>
+                <view class='dataInfo-sumNum1'>{{businessData.meituan[0].effective_ord}}单</view>
+                <view class='dataInfo-sumNum3' wx:if="{{businessData.meituan[0].effective_growth_ord > 0}}">{{businessData.meituan[0].effective_growth_ord}}</view>
+                <view class='dataInfo-sumNum3 red' wx:else>{{businessData.meituan[0].effective_growth_ord}}%</view>
+
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<!-- 天气预报 -->
+<view class="platform" wx:if="{{chooseItem == 2}}">
+  <view class='platform-head'>
+    <view class='head-left'>
+      {{ptDataText5}}
+      <image class='head-leftimg' src='/images/bz.png'></image>
+    </view>
+    <view class='head-right'>
+      <view class='sanjiao1'></view>
+      <view class='sanjiao2'></view>
+      <!-- <view class='right-text1' bindtap='changePtType'>{{ptDataText5}}</view>
+      <view class='right-text2' bindtap='changePtType'>点击切换</view> -->
+    </view>
+  </view>
+  <!-- 天气列表 -->
+  <view class='animated bounceInLeft'>
+      <view class='platform-item'>
+    <view class='weekly'> <text>(请参考未来天气，调整店内准备工作以免影响出餐)</text> </view>
+    <view class='weekly-info2'>
+     <block wx:for="{{weatherweek}}" wx:key>
+     <view class='weatherItem'>
+        <view class='weatherItem-day'>{{item.d}}</view>
+        <view class='weatherItem-wea'>{{item.wea}}</view>
+       <!-- <image  src="https://xcx.od888.cn/static/fixed/tiqi/{{item.wea_img}}.png" /> -->
+     </view>
+     </block>
+    </view>
+  </view>
+   
+  </view>
+
+</view>
+<!-- 店铺诊断 -->
+<view class="platform" wx:if="{{chooseItem == 1}}">
+  <view class='platform-head'>
+    <view class='head-left'>
+      {{ptDataText3}}
+      <image class='head-leftimg' src='/images/bz.png'></image>
+    </view>
+    <view class='head-right'>
+      <view class='sanjiao1'></view>
+      <view class='sanjiao2'></view>
+      <view class='right-text1' bindtap='changePtType2'>{{ptDataText4}}</view>
+      <view class='right-text2' bindtap='changePtType2'>点击切换</view>
+    </view>
+  </view>
+   <view class="gallery animated bounceInLeft">
+  <view class='tipTitle'>
+    快去上传需要诊断的照片吧
+  </view>
+  <view class='item-ot'>
+    <view class="item">
+      <!-- 添加按钮 -->
+      <view class="addIcon" bindtap="uploadImage" wx:if="{{imgsrc == ''}}">
+          <view class=''>+</view>
+      </view>
+      <!-- 上传的图 -->
+      <view class='itemImg' >
+        <image src="{{imgsrc[0]}}" bindtap="previewImage"  mode="aspectFill" />
+        <!-- 删除按钮 -->
+        <view class="delete" bindtap="deleteImg" data-index="{{index}}">X</view>
+      </view>
+      <view class='boxStyle'></view>
+    </view>
+    <view class='itemTxt'>{{showMsg}}</view>
+  </view>
+  <view class='uploadFinish'>
+    <a class="uploadFinishBtn" href="javasctipt:;"  bindtap="uploadImg">提  交</a>
+  </view> 
+  </view>
+  <!-- 饿了么 -->
+  <view class='animated bounceInLeft' wx:if="{{ptDataType2 == 0}}">
+    <view class='history-table-wrap'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th5"></view>
+          <view class="th th7">昨天</view>
+           <view class="th th7">前天</view>
+            <view class="th th6">大前天</view>
+        </view>
+        <view class="tr">
+          <view class="td td5">竞价费用</view>
+          <view class="td td6">{{detailList[0].eleme.bidding[0]}}</view>
+           <view class="td td6">{{detailList[0].eleme.bidding[1]}}</view>
+            <view class="td td6">{{detailList[0].eleme.bidding[2]}}</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">曝光数</view>
+           <view class="td td6">{{detailList[0].eleme.exposure[0]}}</view>
+           <view class="td td6">{{detailList[0].eleme.exposure[1]}}</view>
+            <view class="td td6">{{detailList[0].eleme.exposure[2]}}</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">进店转化率</view>
+             <view class="td td6">{{detailList[0].eleme.place[0]}}%</view>
+           <view class="td td6">{{detailList[0].eleme.place[1]}}%</view>
+            <view class="td td6">{{detailList[0].eleme.place[2]}}%</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">下单转化率 </view>
+          <view class="td td6">{{detailList[0].eleme.slouching[0]}}%</view>
+          <view class="td td6">{{detailList[0].eleme.slouching[1]}}%</view>
+          <view class="td td6">{{detailList[0].eleme.slouching[2]}}%</view>
+        </view>
+      </view>
+    </view>
+    <view class='diagnosis'>
+      <view class='diagnosis-list'>
+        <view class='diagnosis-total'>诊断报告:</view>
+        <block wx:for="{{detailList[0].eleme.enum}}" wx:key>
+           <view class='diagnosis-info'>{{index+1}}. {{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 美团 -->
+  <view class='animated bounceInRight' wx:if="{{ptDataType2 == 1}}">
+    <view class='history-table-wrap'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th5"></view>
+            <view class="th th7">昨天</view>
+           <view class="th th7">前天</view>
+            <view class="th th6">大前天</view>
+        </view>
+        <view class="tr">
+          <view class="td td5">竞价费用</view>
+          <view class="td td6">{{detailList[1].meituan.bidding[0]}}</view>
+           <view class="td td6">{{detailList[1].meituan.bidding[1]}}</view>
+            <view class="td td6">{{detailList[1].meituan.bidding[2]}}</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">曝光数</view>
+           <view class="td td6">{{detailList[1].meituan.exposure[0]}}</view>
+           <view class="td td6">{{detailList[1].meituan.exposure[1]}}</view>
+            <view class="td td6">{{detailList[1].meituan.exposure[2]}}</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">进店转化率</view>
+             <view class="td td6">{{detailList[1].meituan.place[0]}}%</view>
+           <view class="td td6">{{detailList[1].meituan.place[1]}}%</view>
+            <view class="td td6">{{detailList[1].meituan.place[2]}}%</view>
+        </view>
+         <view class="tr">
+          <view class="td td5">下单转化率 </view>
+          <view class="td td6">{{detailList[1].meituan.slouching[0]}}%</view>
+          <view class="td td6">{{detailList[1].meituan.slouching[1]}}%</view>
+          <view class="td td6">{{detailList[1].meituan.slouching[2]}}%</view>
+        </view>
+      </view>
+    </view>
+    <view class='diagnosis'>
+      <view class='diagnosis-list'>
+        <view class='diagnosis-total'>诊断报告:</view>
+        <block wx:for="{{detailList[1].meituan.enum}}" wx:key>
+           <view class='diagnosis-info'>{{index+1}}. {{item}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+</view>

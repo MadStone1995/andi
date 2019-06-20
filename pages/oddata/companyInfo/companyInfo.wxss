@@ -1,0 +1,133 @@
+page{
+  background-color: #F2F2F2;
+}
+/* .swiper-box{
+  width: 100%;
+  height: 300rpx;
+}
+.swiper-img{
+  width: 100%;
+  height: 300rpx;
+} */
+.notice{
+  width: 710rpx;
+  height: 160rpx;
+  background:rgba(255,247,197,1);
+  border:1rpx solid rgba(246,179,127,1);
+  box-sizing: border-box;
+  font-size: 24rpx;
+  line-height: 45rpx;
+  color: #496DAA;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+.notice-img{
+  width: 26rpx;
+  height: 26rpx;
+}
+.bannerImg{
+  width: 750rpx;
+  height: 400rpx;
+}
+.bannerImg2{
+  width: 710rpx;
+  height: 260rpx;
+  margin: 20rpx;
+}
+.info{
+  background-color: #fff;
+  font-size: 28rpx;
+  color: #333;
+  height: 280rpx;
+  padding-top: 20rpx;
+}
+.banner2{
+  width: 100%;
+  height: 300rpx;
+  background-color: #fff;
+}
+.info-text1{
+  margin-left: 40rpx;
+  line-height: 60rpx;
+  width: 670rpx;
+}
+.info-text{
+  margin-left: 40rpx;
+  line-height: 60rpx;
+}
+.info text{
+  color: #496DAA;
+  text-decoration: underline;
+}
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+.loginBox{
+  width: 520rpx;
+  height: 410rpx;
+  position: fixed;
+  background:linear-gradient(0deg,rgba(66,93,138,1) 0, rgba(207,224,247,1) 100%);
+  /* background-color: red; */
+  border-radius:10rpx;
+  top: 30%;
+  left: 115rpx;
+  z-index: 1000;
+}
+.inputItem{
+  width: 400rpx;
+  height: 60rpx;
+  border-radius: 5rpx;
+  background-color: #fff;
+  margin:60rpx;
+}
+.loginhead{
+  width: 0rpx;
+  height: 24rpx;
+  float: left;
+  border-right: 1rpx #DDDDDD solid;
+  margin-top: 18rpx;
+}
+.loginimg{
+  float: left;
+  width: 28rpx;
+  height: 28rpx;
+  margin: 16rpx 19rpx 16rpx 20rpx;
+}
+.bottomitem{
+  width: 520rpx;
+  height: 90rpx;
+  font-size: 32rpx;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+.bottombtn{
+  float: left;
+  width: 260rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-right: 1rpx #CFE0F7 solid;
+  border-top: 1rpx #CFE0F7 solid;
+  box-sizing: border-box;
+}
+.noright{
+  border-right: none;
+}
+.logininput{
+  float:left;
+  font-size:22rpx;
+  color:#666666;
+  height:60rpx;
+  line-height:60rpx;
+  width:300rpx;
+  padding-left:20rpx;
+}

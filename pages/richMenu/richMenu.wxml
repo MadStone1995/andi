@@ -1,0 +1,94 @@
+<view class="container">
+  <view class="page-body">
+  <view class=''>
+  <view class='imgList'>
+  <view class='imgtotal'>菜品主图:(长按可删除)</view>
+    <block wx:for="{{imgPaths}}"wx:key="{{index}}">
+      <view class='imgItem'>
+        <image src='{{item.url}}' class="uploadImg" data-id='{{index}}' bindlongtap='deleteImg'></image>
+      </view>
+    </block>
+    <view class='addImg' bindtap='uploadImg'>+</view>
+  </view>
+   <view class='inputItem'>
+    <view class='inputItem-total'>菜品名称</view>
+    <input placeholder='请输入' bindinput='inputGoods' class='inputItem-text' value='{{infoDetail.goods}}'></input>
+   </view>
+  </view>
+  <view class='inputItem'>
+    <view class='inputItem-total'>菜品标签</view>
+    <input placeholder='请输入' bindinput='inputLabel' class='inputItem-text' value='{{infoDetail.label}}'></input>
+   </view>
+    <view class='inputItem'>
+    <view class='inputItem-total'>火爆地区</view>
+    <input placeholder='请输入' bindinput='inputHot' class='inputItem-text' value='{{infoDetail.hot}}'></input>
+   </view>
+    <view class='inputItem'>
+    <view class='inputItem-total'>简介</view>
+    <input placeholder='请输入' bindinput='inputAbstract' class='inputItem-text' value='{{infoDetail.abstract}}'></input>
+   </view>
+    <view class='ingredientsList-total'>烹饪视频：</view>
+    <view class='ingredientsList' style="float: left;">
+      <video class='spInfo' wx:if="{{videoSrc != ''}}"  src='{{videoSrc}}'></video>
+      <view class='addVideo' bindtap='addVideo'>上传视频+</view>
+    </view>
+   <view class='ingredientsList-total'>烹饪材料：</view>
+    <view class='ingredientsList'>
+      <block wx:for="{{ingredientsList}}" wx:key>
+      <view class='ingredientsList-item'>
+       <input class='itemInfo' placeholder="原料名称" data-index='{{index}}' value='{{item.ingredientsName}}' bindinput='inputingredientsName'></input>
+       <input class='itemInfo' placeholder="原料分量" data-index='{{index}}' value='{{item.ingredientsNum}}' bindinput='inputingredientsNum'></input>
+      </view>
+      </block>
+      <view class='addItem' bindtap='addItem'>+</view>
+    </view>
+
+    <view class='wrapper'>
+      <view class='toolbar' bindtap="format">
+        <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+        <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+        <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+        <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
+        <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
+        <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
+        <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
+        <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
+        <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
+        <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
+        <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
+        <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
+        <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
+        <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
+        <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
+
+        <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
+        <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
+
+        <i class="iconfont icon-date" bindtap="insertDate"></i>
+        <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+        <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+        <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+        <i class="iconfont icon-undo" bindtap="undo"></i>
+        <i class="iconfont icon-redo" bindtap="redo"></i>
+
+        <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
+        <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
+        <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
+        <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
+        <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
+        <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
+        <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
+        <i class="iconfont icon-quanping"></i> 
+        <i class="iconfont icon-shanchu" bindtap="clear"></i>
+        <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i>
+
+      </view> 
+      <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange"  read-only="{{readOnly}}" bindinput="inputDetail" bindready="onEditorReady">
+      </editor>
+      <view>
+        <!-- <button bindtap="readOnlyChange">{{readOnly ? '可写':'只读'}}</button> -->
+        <button class='subbtn' bindtap='submitInfo'>提交上传</button>
+      </view>
+    </view>
+  </view>
+</view>

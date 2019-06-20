@@ -1,0 +1,73 @@
+/* pages/my/sjrz/sjrz.wxss */
+.banner{
+  width: 750rpx;
+  height: 1134rpx;
+}
+.sjInfo{
+  width: 710rpx;
+  margin: 20rpx;
+}
+.info-item{
+  height: 150rpx;
+}
+.itemName{
+  font-size: 30rpx;
+  color: #333;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.info-input{
+  height: 80rpx;
+  line-height: 80rpx;
+  min-height: 80rpx;
+  border-bottom: 1rpx #f2f2f2 solid;
+  box-sizing: border-box;
+}
+.checkboxtext{
+  color: #333;
+  font-size: 30rpx;
+}
+.imgtotal{
+  font-size: 30rpx;
+  color: #333;
+  margin: 20rpx 0;
+}
+.imgItem{
+  float: left;
+   width: 220rpx;
+  height: 220rpx;
+  margin:9rpx;
+  border-radius: 15rpx;
+}
+.uploadImg{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius:15rpx;
+}
+.addImg{
+  float: left;
+  width: 220rpx;
+  height: 220rpx;
+  margin: 10rpx 10rpx;
+  line-height: 220rpx;
+  text-align: center;
+  font-size: 60rpx;
+  color: #bbb;
+  font-weight: bold;
+  border: 1rpx #bbb solid;
+  box-sizing: border-box;
+  border-radius: 15rpx;
+}
+.submitInfo{
+  float: left;
+  width: 710rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 33rpx;
+  color: #fff;
+  background-color: #6F8ACE;
+  border-radius: 5rpx;
+  margin: 20rpx;
+  text-align: center;
+  font-weight: bold;
+}

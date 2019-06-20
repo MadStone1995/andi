@@ -1,0 +1,60 @@
+<!-- 打卡日历页面 -->
+<view class='header'>
+  <view class='header-item1'>
+    <view class='jifen'>积分:{{userInfo.integral || 0}}</view>
+    <view class='guize'>签到规则</view>
+  </view>
+  <view class='header-item2'>
+    <view class='box1' bindtap='qiandao'>
+      <view class='box2'>
+        <view class='box3'>
+          <view class='box-text margintop'>立即</view>
+          <view class='box-text'>签到</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='qd-info'>
+  <view class='qdiconlist'>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+    <image class='icon1' src='/images/qd-icon.png'></image>
+  </view>
+  <view class='nowdate'>{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+  <view class="week">
+    <view wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}        </view>
+  </view>
+   <view class='days'>
+    <!-- 列 -->
+    <view class="columns" wx:for="{{days.length/7}}" wx:for-index="i" wx:key="i">
+      <view wx:for="{{days}}" wx:for-index="j" wx:key="j">
+        <!-- 行 -->
+        <view class="rows" wx:if="{{j/7 == i}}">
+          <view class="rows" wx:for="{{7}}" wx:for-index="k" wx:key="k">
+            <!-- 每个月份的空的单元格 -->
+            <view class='cell' wx:if="{{days[j+k].date == null}}">
+              <text decode="{{true}}">&nbsp;&nbsp;</text>
+            </view>
+            <!-- 每个月份的有数字的单元格 -->
+            <view class='cell' wx:else>
+              <!-- 当前日期已签到 -->
+              <view wx:if="{{days[j+k].isSign == true}}" class='cellInfo'>
+              <image class='haveqiandao' src='/images/qd-icon2.png'></image>
+                <text>{{days[j+k].date}}</text>
+              </view>
+              <!-- 当前日期未签到 -->
+              <view wx:else class='cellInfo'>
+                <text>{{days[j+k].date}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

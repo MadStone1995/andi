@@ -1,0 +1,78 @@
+<!--品牌加盟详情-->
+<view class='header'>
+  <view class='header-info'>
+    <image class='info-img' src="{{detaiInfo.url || '/images/zw.jpg'}}"></image>
+    <view class='info-detail'>
+      <view class='detail-name'>{{detaiInfo.brand_name}}</view>
+      <view class='detail-num'>线上平台店铺数:{{detaiInfo.meituan + detaiInfo.eleme}}[美:{{detaiInfo.meituan}}  饿:{{detaiInfo.eleme}} ]</view>
+      <view class='detail-star'> 实体已开店:{{allList.openings}}家, 待开店(已签约):{{allList.stay_openings}}家</view>
+      <view class='detail-date'>截止日期:{{dateTime}}</view>
+      <!-- <view class='detail-star'>
+        <view class='star-total'>诚信指数：</view>
+        <image src='/images/star.png' wx:if="{{1 <= detaiInfo.exponent}}"class='star-img'></image>
+        <image src='/images/star.png' wx:if="{{2 <= detaiInfo.exponent}}" class='star-img'></image>
+        <image src='/images/star.png'  wx:if="{{3 <= detaiInfo.exponent}}" class='star-img'></image>
+        <image src='/images/star.png' wx:if="{{4 <= detaiInfo.exponent}}" class='star-img'></image>
+          <image src='/images/star.png' wx:if="{{5 <= detaiInfo.exponent}}" class='star-img'></image>
+      </view> -->
+    </view>
+  </view>
+</view>
+<view class='shopInfo'>
+  <view class='map-total'>门店概况</view>
+  <view class="container" id='container'>
+  <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>
+<view class="{{showMore ?'mdxqInfo2':'mdxqInfo'}}">
+  <view class='mdxqInfo-total'>门店详情</view>
+    <block wx:for="{{allList.distribution}}" wx:key>
+      <view class='xqList'>
+        <view class='xqItem'>{{item.name}}</view>
+        <view class='' wx:for="{{item.drop}}" wx:key wx:for-item="items">
+          <view class='cityInfo'>{{items.name}}</view>
+          <view class='cityInfo'>{{items.value}}</view>
+        </view>
+      </view>
+    </block>
+</view>
+<view class='lookmore' bindtap='lookInfo'> {{showMore ? '收起详情':'查看详情'}}</view>
+<view class='shopList'>
+  <view class='shopList-total'>门店展示</view>
+  <block wx:for="{{allList.shop}}" wx:key>
+  <view class='shop-item'>
+     <view class='shop-name'>{{item.name}}</view>
+     <view class='shop-num'>月销总量:{{item.sales}}</view>
+      <view class='shop-num'>月营收:{{item.discount_sales}}</view>
+  </view>
+  </block>
+ 
+</view>
+<view class='shopList'>
+  <view class='shopList-total'>热销菜品</view>
+  <block wx:for="{{allList.food}}" wx:key>
+  <view class='food-item'>
+     <view class='food-info'>{{item.name}}</view>
+     <view class='food-info'>月销:{{item.sales}}</view>
+      <!-- <view class='shop-num'>月营收:{{item.discount_sales}}</view> -->
+  </view>
+  </block>
+</view>
+<view class='companyInfo'>
+  <view class='companyInfo-total'>品牌说</view>
+  <view class='companyInfo-info'>公司介绍</view>
+  <view class='companyInfo-text'>{{allList.introduction}}</view>
+</view>
+<view class='imgList'>
+  <view class='imgList-total'>公司风采</view>
+  <view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{allList.photo}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item.url}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+</view>
+<view class='joinIt' bindtap='callPhone'>预约加盟</view>

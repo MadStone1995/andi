@@ -1,0 +1,50 @@
+<!--积分商城-->
+<view class='header'>
+  <view class='user-Item'>
+     <image src="{{userInfo.photo_url || '/images/default.png'}}" class='header-img'></image>
+     <view class='user-name'><text>{{userInfo.name}}</text></view>
+  </view>
+  <view class='user-Item'>
+    <view class='item-total'>账户可使用积分:</view>
+     <view class='item-num'>{{userInfo.integral || 0}}</view>
+  </view>
+</view>
+<view class='banner1'>
+  <image src='https://xcx.od888.cn/static/fixed/images/mall-banner1.png'></image>
+</view>
+<image class='banner2' src='https://xcx.od888.cn/static/fixed/images/mall-banner2.png'></image>
+<view class='wj-info'>
+  <view class='wj-total'>您对于积分商城中的礼品，更倾向于哪些?</view>
+  <view class='item-total2'>{{allList[0].letter}}.{{allList[0].content}}</view>
+  <view class=''>
+      <checkbox-group bindchange="checkboxChange">
+      <block wx:for="{{allList[0].value}}" wx:key>
+        <view class="checkbox {{index==0 ? 'checkboxtop':''}} {{item.state?'chooseItem':''}}" >
+          <checkbox class='chooseItembox' value="{{item.options_id}}" checked="{{item.state}}" />
+          <image class='proImg' src='{{item.photo}}'></image>
+           <view class='protxt'>{{item.letter}}.{{item.content}}</view>
+        <view class='chooseNum'>{{item.number}}人选择</view>
+        </view>
+      </block>
+  </checkbox-group>
+  </view>
+   <view class='item-total2'>{{allList[1].letter}}.{{allList[1].content}}</view>
+  <view class=''>
+       <checkbox-group bindchange="checkboxChange2">
+      <block wx:for="{{allList[1].value}}" wx:key>
+        <view class="checkbox {{index==0 ? 'checkboxtop':''}} {{item.state==1 ?'chooseItem':''}}" >
+          <checkbox class='chooseItembox' value="{{item.options_id}}" checked="{{item.state==1}}" />
+           <image class='proImg' src='{{item.photo}}'></image>
+           <view class='protxt'>{{item.letter}}.{{item.content}}</view>
+        <view class='chooseNum'>{{item.number}}人选择</view>
+        </view>
+      </block>
+  </checkbox-group>
+  </view>
+</view>
+<view class='btn' wx:if="{{tjState == 0}}" bindtap='submiteInfo'>
+  提交
+</view>
+<view class='btn2' wx:if="{{tjState == 1}}" bindtap='submiteInfo'>
+  已提交
+</view>

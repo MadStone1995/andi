@@ -1,0 +1,109 @@
+<!--安心加盟-->
+<view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='noJurisdiction' wx:if="{{sqStatus == -2}}">
+  <view class='noJurisdiction-item'>
+    <image class='noJurisdiction-icon' src="/images/gth.png"></image>
+    <view class='noJurisdiction-txt'>账号未授权将无法获得数据，请先授权登录</view>
+  </view>
+  <view class='noJurisdiction-item'>
+    <image src='/images/xy.png' class='jurisdiction-icon'></image>
+    <view class='jurisdiction-text' bindtap='toAuthorization'>
+      去授权
+    </view>
+  </view>
+</view>
+<!-- <view class='notice'>
+  <view class='notice-info'>公告栏：内容待定</view>
+</view> -->
+<view class='nav-List'>
+  <view class="nav-item {{chooseItem==0 ?'activeNav':''}}" data-type='0' bindtap='chooseType'>
+    <view>平台运营数据</view>
+  </view>
+  <view class="nav-item {{chooseItem==1 ?'activeNav':''}}" data-type='1' bindtap='chooseType'>
+    <view>平台订单数据</view>
+  </view>
+  <view class="nav-item {{chooseItem==2 ?'activeNav':''}}" data-type='2' bindtap='chooseType'>
+    <view>销售商品数据</view>
+  </view>
+</view>
+<view class='infoList' wx:if="{{chooseItem==0}}">
+ <view class='history-table-wrap'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">平台名称</view>
+        <view class="th th6">有效营收</view>
+        <view class="th th7">有效销量</view>
+        <view class="th th8">日期</view>
+      </view>
+    <scroll-view scroll-y bindscrolltolower="loadMoreYy"style="height:{{heightInfo}}px;max-height:600rpx;" class='shopInfo'>
+     <view class="tr" wx:for="{{yyList}}" wx:key>
+        <view class="td td5">{{item.platform}}</view>
+        <view class="td td5">{{item.revenue}}</view>
+        <view class="td td5">{{item.effective}}</view>
+        <view class="td td5">{{item.data_date}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+    </view>
+  </view>
+</view>
+<view class='infoList' wx:if="{{chooseItem==1}}">
+ <view class='history-table-wrap'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th7">平台</view>
+        <view class="th th5">顾客姓名</view>
+        <view class="th th6">顾客实付</view>
+        <view class="th th7">下单时间</view>
+      </view>
+    <scroll-view scroll-y bindscrolltolower="loadMoreDd"style="height:{{heightInfo}}px;max-height:600rpx;" class='shopInfo'>
+     <view class="tr" wx:for="{{ddList}}" wx:key>
+        <view class="td td5">{{item.platform}}</view>
+        <view class="td td5">{{item.customer_name}}</view>
+        <view class="td td5">{{item.income}}</view>
+        <view class="td td5">{{item.order_datetime}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+    </view>
+  </view>
+</view>
+<view class='infoList' wx:if="{{chooseItem==2}}">
+ <view class='history-table-wrap'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th7">平台</view>
+        <view class="th th5">商品名称</view>
+        <view class="th th6">销量/营收额</view>
+        <view class="th th7">日期</view>
+      </view>
+    <scroll-view scroll-y bindscrolltolower="loadMoreSp"style="height:{{heightInfo}}px;max-height:600rpx;" class='shopInfo'>
+     <view class="tr" wx:for="{{spList}}" wx:key>
+        <view class="td td5">{{item.platform}}</view>
+        <view class="td td5">{{item.name}}</view>
+        <view class="td td5">{{item.sales}}/{{item.revenue}}</view>
+        <view class="td td5">{{item.data_date}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+    </view>
+  </view>
+</view>
+

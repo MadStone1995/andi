@@ -1,0 +1,167 @@
+<view class='nav-List'>
+  <view class="nav-item {{chooseItem==0 ?'activeNav':''}}" data-type='0' bindtap='chooseType'>
+    <view>饿了么</view>
+  </view>
+  <view class="nav-item {{chooseItem==1 ?'activeNav':''}}" data-type='1' bindtap='chooseType'>
+    <view>美团</view>
+  </view>
+  <view class="nav-item {{chooseItem==2 ?'activeNav':''}}" data-type='2' bindtap='chooseType'>
+    <view>微信小程序</view>
+  </view>
+  <view class="nav-item {{chooseItem==3?'activeNav':''}}" data-type='3' bindtap='chooseType'>
+    <view>堂食</view>
+  </view>
+</view>
+<view class='noJurisdiction' wx:if="{{sqStatus == -2 && chooseItem != 2 && chooseItem != 3 }}">
+  <view class='noJurisdiction-item'>
+    <image class='noJurisdiction-icon' src="/images/gth.png"></image>
+    <view class='noJurisdiction-txt'>账号未授权将无法获得数据，请先授权登录</view>
+  </view>
+  <view class='noJurisdiction-item'>
+    <image src='/images/xy.png' class='jurisdiction-icon'></image>
+    <view class='jurisdiction-text' bindtap='toAuthorization'>
+      去授权
+    </view>
+  </view>
+</view>
+<view class='noJurisdiction2' wx:if="{{sqStatus != -2 && chooseItem != 3 }}">
+  <view class='noJurisdiction-item2'>
+    <view class='noJurisdiction-txt' wx:if="{{sqStatus == 0}}">账号授权申请中</view>
+    <view class='noJurisdiction-txt' wx:if="{{sqStatus == -1}}">账号授权申请失败</view>
+    <view class='noJurisdiction-txt' wx:if="{{sqStatus == 1}}">账号授权申请成功</view>
+    <view class='jurisdiction-text' bindtap='toAuthorization'>
+      查看详情
+    </view>
+  </view>
+</view>
+<view class='nokf'  wx:if="{{chooseItem == 2 || chooseItem == 3}}">待开发中。。。</view>
+<!-- 饿了么 / 美团-->
+<view class='platform' >
+  <view class='platform-item'>
+    <view class='daily'>日报同比 <text>(实时数据更新时间为14时和21时)</text></view>
+    <view class='noqx' wx:if="{{!haveqx}}">要先绑定店铺哦</view>
+    <view class='daily-info' wx:if="{{haveqx}}">
+      <view class='daily-infoItem'>
+        <view class='daily-total'>实时</view>
+        <view class='daily-total2'>实时比</view>
+        <view class='daily-total2'>昨日</view>
+        <view class='daily-total2'>较前日</view>
+      </view>
+      <view class='daily-infoItem'>
+        <view class='daily-total1 '>商家实收</view>
+        <view class='daily-total1num '>{{detail.daily[0].list.revenue_new}}</view>
+        <view class="daily-total1num" wx:if='{{detail.daily[0].list.revenue_growth_new==0}}'>{{detail.daily[0].list.revenue_growth_new}}</view>
+        <view class=" daily-total1num {{detail.daily[0].list.revenue_growth_new > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[0].list.revenue_growth_new}}</view>
+        <view class='daily-total1num '>{{detail.daily[0].list.revenue_ord}}</view>
+        <view class='daily-total1num ' wx:if='{{detail.daily[0].list.revenue_growth_ord==0}}'>{{detail.daily[0].list.revenue_growth_ord}}%</view>
+        <view class=" daily-total1num {{detail.daily[0].list.revenue_growth_ord > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[0].list.revenue_growth_ord}}%</view>
+      </view>
+      <view class='daily-infoItem'>
+        <view class='daily-total1'>客户实付</view>
+        <view class='daily-total1num '>{{detail.daily[1].list.totalsale_new}}</view>
+        <view class="daily-total1num" wx:if='{{detail.daily[1].list.totalsale_growth_new==0}}'>{{detail.daily[1].list.totalsale_growth_new}}</view>
+        <view class=" daily-total1num {{detail.daily[1].list.totalsale_growth_new > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[1].list.totalsale_growth_new}}</view>
+        <view class='daily-total1num '>{{detail.daily[1].list.totalsale_ord}}</view>
+        <view class='daily-total1num ' wx:if='{{detail.daily[1].list.totalsale_growth_ord==0}}'>{{detail.daily[1].list.totalsale_growth_ord}}%</view>
+        <view class=" daily-total1num {{detail.daily[1].list.totalsale_growth_ord > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[1].list.totalsale_growth_ord}}%</view>
+      </view>
+      <view class='daily-infoItem'>
+        <view class='daily-total1'>有效订单数</view>
+        <view class='daily-total1num '>{{detail.daily[2].list.effective_new || 0}}单</view>
+        <view class="daily-total1num" wx:if='{{detail.daily[2].list.effective_growth_new==0}}'>{{detail.daily[2].list.effective_growth_new}}</view>
+        <view class=" daily-total1num {{detail.daily[2].list.effective_growth_new > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[2].list.effective_growth_new}}</view>
+        <view class='daily-total1num '>{{detail.daily[2].list.effective_ord || 0}}单</view>
+        <view class='daily-total1num ' wx:if='{{detail.daily[2].list.effective_growth_ord==0}}'>{{detail.daily[2].list.effective_growth_ord}}%</view>
+        <view class=" daily-total1num {{detail.daily[2].list.effective_growth_ord > 0 ? 'upNum':'downNum'}}" wx:else>{{detail.daily[2].list.effective_growth_ord}}%</view>
+      </view>
+    </view>
+  </view>
+  <view class='platform-item'>
+    <view class='weekly'>周报环比</view>
+    <!-- <view class='noqx' wx:if="{{!haveqx}}">要先绑定店铺哦</view> -->
+    <view class='table-total'>有效单量比</view>
+    <view class='history-table-wrap'>
+        <view class="table">
+          <view class="tr">
+            <view class="th th5"> </view>
+            <view class="th th6">上周单量</view>
+            <view class="th th7">本周单量</view>
+          </view>
+          <view class="tr" wx:for="{{detail.weekly.effective}}" wx:key>
+            <view class="td td5">{{item.data_date}}</view>
+            <view class="td td6">{{item.last_week}}</view>
+            <view class="td td7">{{item.this_week}}</view>
+          </view>
+        </view>
+    </view>
+    <view class='table-total'>有效营收比</view>
+      <view class='history-table-wrap'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th5"> </view>
+          <view class="th th6">上周营收</view>
+          <view class="th th7">本周营收</view>
+        </view>
+        <view class="tr" wx:for="{{detail.weekly.revenue}}" wx:key>
+          <view class="td td5">{{item.data_date}}</view>
+          <view class="td td6">{{item.last_week}}</view>
+          <view class="td td7">{{item.this_week}}</view>
+        </view>
+      </view>
+  </view>
+    <!-- <view class='weekly-info'>
+      <view class="container" id='container1'>
+        <ec-canvas class='ec-canvas1' id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+        <ec-canvas  class='ec-canvas1' id="mychart-dom-line2" canvas-id="mychart-line2" ec="{{ ec2 }}"></ec-canvas>
+      </view>
+    </view> -->
+  </view>
+ <view class='platform-item'>
+    <view class='weekly' style='margin-bottom:10rpx;'>流量同比</view>
+    <!-- <view class='noqx' wx:if="{{!haveqx}}">要先绑定店铺哦</view> -->
+    <!-- <view class='weekly-info2'>
+      <view class="container" id='container2'>
+        <ec-canvas class='ec-canvas2' id="mychart-dom-line3" canvas-id="mychart-line3" ec="{{ ec3 }}"></ec-canvas>
+      </view>
+    </view> -->
+    <view class='history-table-wrap'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th5">日期</view>
+          <view class="th th6">新顾客</view>
+          <view class="th th7">老顾客</view>
+        </view>
+        <view class="tr" wx:for="{{detail.othely}}" wx:key>
+          <view class="td td5">{{item.data_date}}</view>
+          <view class="td td6">{{item.newclient}}</view>
+          <view class="td td7">{{item.oldclient}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+   <!-- <view class='platform-item'>
+    <view class='weekly'>未来7天天气 <text>(请参考未来天气，调整店内准备工作以免影响出餐)</text> </view>
+    <view class='weekly-info2'>
+     <block wx:for="{{weatherweek.data}}" wx:key>
+     <view class='weatherItem'>
+        <view class='weatherItem-day'>{{item.day}}</view>
+        <view class='weatherItem-wea'>{{item.wea}}</view>
+       <image  src="https://xcx.od888.cn/static/fixed/tiqi/{{item.wea_img}}.png" />
+     </view>
+     </block>
+    </view>
+  </view> -->
+</view>
+<view class=''></view>
+<button open-type='contact' class='buttonItem'>
+  <view class='funList-item'>
+    <image src='/images/kefuinfo.png' class='kefuImg'></image>
+    <view class='kefutext'>在线客服</view>
+  </view>
+</button>
+<!-- <view class="container">
+  <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view> -->
+<!-- <view class="container" wx:if="{{chooseItem==1}}">
+ 
+</view> -->

@@ -1,0 +1,28 @@
+<image class='banner' src='/images/sq-banner2.png'></image>
+<image class='banner2' src='https://xcx.od888.cn/static/fixed/images/logo.png'></image>
+<view class='dpsq'>用户注册</view>
+<view class='dpInfo'>
+  <view class='dptotal'>请填写用户注册信息</view>
+  <input class='input-phone' placeholder='请输入您的手机号码' placeholder-style='font-size:24rpx;color:#999999;' value='{{userInfo.phone}}' bindinput="inputPhone"></input>
+  <input class='input-yzm' placeholder='请输入手机验证码' value='{{userInfo.code}}' bindinput="inputPsd2"></input>
+   <view class='yzmBtn' bindtap='sendMsg' wx:if="{{canSend}}">发送验证码</view>
+   <view class='yzmBtn' wx:if="{{!canSend}}">重新发送{{second}}秒</view>
+ <view class='addressInfo' bindtap='chooseAddress'>
+      <view class='choose-area leftjl'>{{region[0] || '省'}}
+       <image class='jtimg' src='/images/xljt.png'></image>
+      </view>
+      <view class='choose-area'>{{region[1] || '市'}}
+         <image class='jtimg' src='/images/xljt.png'></image></view>
+  </view>
+ <view class='arrayList'>
+  <picker bindchange="bindSxChange" value="{{index}}" range="{{array}}">
+    <view class="picker sxInfo">
+      {{sxInfo || '请选择用户身份'}}
+         <image class='jtimg' src='/images/xljt.png'></image>
+    </view>
+  </picker>
+ </view>
+  <button class='btncss' bindtap='registerUser'>注册</button>
+</view>
+<area_picker_two isshow="{{isshow}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker_two>

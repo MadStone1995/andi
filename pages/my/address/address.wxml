@@ -1,0 +1,20 @@
+<!--地址管理-->
+<view>
+  <view wx:if="{{ shipaddress.length != 0 }}" class="shipaddress">
+    <view class='shipaddList' wx:for="{{ shipaddress }}" wx:key="address_id">
+      <view class='shipaddLeft' bindtap='chooseAddress' data-address='{{item}}'>
+        <view class='namenum'>
+          <text class='shipname'>{{item.name}}</text>
+          <text class='shipnum'>{{item.phone}}</text>
+        </view>
+        <view class='showaddress'>
+          <view wx:if="{{ item.type==1 }}" class='defaultaddress theme-color'>默认</view>
+          <view class='addressdetail'>{{item.region}}{{item.detailed}}</view>
+        </view>
+      </view>
+      <view class='shipaddRight' data-address='{{item}}' data-addressid='{{item.address_id}}' bindtap='editAddress'>编辑</view>
+    </view>
+  </view>
+  <view wx:if="{{ shipaddress.length == 0 }}" class="noshipadd">还没有地址信息</view>
+</view>
+<view class='addshipadd od-bg-c-primary' bindtap='addAddress'>添加收货地址</view>

@@ -1,0 +1,33 @@
+<!--pages/my/myyue/myyue.wxml-->
+<view class='header'>
+  <image class='bannerImg' src='/images/my/myintegral-banner.png'></image>
+  <view class='yue-cz'>
+     <view class='num'>{{userInfo.integral || 0}}</view>
+    <view class='tixian' bindtap='tomall'>积分商城</view>
+  </view>
+</view>
+<view class='sendInfo'>
+  <view  class='sendInfo-total'>积分转赠:</view>
+  <input class='sendInfo-num' type='number' placeholder='受赠人手机号' value='{{phone}}' bindinput='inputPhone'></input>
+  <input class='sendInfo-num2' type='number' bindinput='inputNum' value='{{sendNum}}' placeholder='请输入积分数'></input>
+  <button class='sendInfo-btn' bindtap='sureSend'>确认</button>
+</view>
+<view class='pNum' >目前受邀人数:<text>{{invitatepeople}}</text></view>
+<view class='pNum'>通过邀请获得积分:<text>{{invitateNum}}</text></view>
+<view class='yue-info'>
+  <view class='info-total'>积分明细</view>
+  <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:450rpx;">
+   <block wx:for='{{pointList}}' wx:key>
+    <view class='listItem'>
+      <view class='dian'></view>
+      <view class='item-date'>{{item.data_date}}</view>
+       <view class='item-total'>{{item.name}}</view>
+        <view class='item-num'>{{item.expense}}</view>
+    </view>
+  </block>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+</view>

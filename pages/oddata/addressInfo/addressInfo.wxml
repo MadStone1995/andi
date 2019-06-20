@@ -1,0 +1,99 @@
+<!-- address.wxml -->
+<view class='headerInfo' bindtap='closeflag'>
+<image src='/images/city-bg.png' class='header-img'></image>
+  <view class='headerInfo-item1'>
+    <view class='item-total'>选择平台：</view>
+    <view class='item-info'>
+      <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{items}}" wx:key>
+        <radio value="{{item.name}}" disabled="{{item.value == '美团'}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+    </view>
+  </view>
+    <view class='headerInfo-item2'>
+    <view class='item-total'>选择城市：</view>
+    <view class='item-info'>
+     <view class="picker innerbox" bindtap='chooseAddress'>
+    {{province == ''?'点我选择地区':province + '-' + city+ '-' + area}}
+  </view>
+    </view>
+  </view>
+  <view class='headerInfo-item3'>
+    <view class='item-total'>查询商家：</view>
+    <view class='item-info'>
+      <input class='input' type='text' bindinput="inputName" value='{{value2}}' bindchange="title" bindconfirm="closeflag" name="name" placeholder="输入关键字"></input>
+    <view class='select' wx:if="{{flag}}">
+      <block wx:for="{{menu}}" wx:key>
+        <view class='select-menu' bindtap='select' data-name='{{item.store_name}}'>{{item.store_name}}</view>
+      </block>
+    </view>
+    </view>
+  </view>
+   <view class='headerInfo-item4'>
+    <view class='item-total'>选择范围：</view>
+    <view class='item-info'>
+     <radio-group class="radio-group" bindchange="range">
+      <label wx:for="{{range}}" wx:key>
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+    </view>
+  </view>
+  <button class='submitInfo' bindtap='formSubmit'>确认搜索</button>
+  <!-- </form> -->
+</view>
+<view bindtap='closeflag' style='float:left;width:100%;'>
+ <view class='updatetime' wx:if="{{update_time !=''}}">更新时间:{{update_time}}</view>
+  <view class='history-table-wrap'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">商家总数</view>
+        <view class="th th6">月销量</view>
+        <view class="th th7">日均销量</view>
+        <view class="th th8">同品类排名</view>
+      </view>
+      <view class="tr">
+        <view class="td td1">{{sqInfo.sum.count}}</view>
+        <view class="td td2">{{sqInfo.sum.month}}</view>
+        <view class="td td2">{{sqInfo.sum.day}}</view>
+        <view class="td td2">{{sqInfo.sum.ranking}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='history-table-wrap wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">店铺名</view>
+        <view class="th th6">月销量</view>
+        <view class="th th7">日均销量</view>
+        <view class="th th8">评分</view>
+      </view>
+       <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:{{heightInfo}}px;" class='shopInfo'>
+     <view class="tr" wx:for="{{detailsList}}" wx:key>
+        <view class="td td5">{{item.store_name}}</view>
+        <view class="td td5">{{item.month}}</view>
+        <view class="td td5">{{item.day}}</view>
+        <view class="td td5">{{item.score}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+     
+    </view>
+  </view>
+  <view class='clink' wx:if="{{flog}}" bindtap='register' data-page='{{page}}'>点击加载更多</view>
+  <!-- <button class='subimt' bindtap='upload' data-url='{{down}}'>下载</button> -->
+
+  <view class="logo_ground">
+    <view class='footer'>
+      <view>如需下载数据请联系客服</view>
+    </view>
+  </view>
+</view>
+ <!-- <area_picker_two isshow="{{show}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker_two> -->
+<area_picker show="{{show}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker>

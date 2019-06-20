@@ -1,0 +1,21 @@
+<!--pages/my/myyue/myyue.wxml-->
+<view class='header'>
+  <image class='bannerImg' src='/images/my/ye-banner.png'></image>
+  <view class='yue-num'>￥0.00</view>
+  <view class='yue-cz'>
+    <view class='chongzhi'>充值</view>
+    <view class='tixian'>提现</view>
+  </view>
+</view>
+<view class='tongzhi'>暂不提供充值功能，见谅</view>
+<!-- <view class='yue-info'>
+  <view class='info-total'>钱包明细</view>
+  <block wx:for='{{yueList}}' wx:key>
+    <view class='listItem'>
+      <view class='dian'></view>
+      <view class='item-date'>{{item.date}}</view>
+       <view class='item-total'>{{item.total}}</view>
+        <view class='item-num'>{{item.num}}</view>
+    </view>
+  </block>
+</view> -->

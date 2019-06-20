@@ -1,0 +1,45 @@
+<!--安心加盟-->
+<!-- <view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view> -->
+<view class='notice'>
+  <view class='notice-info'>
+  <image src='/images/gth.png' class='notice-img'></image>
+   告知：品牌公司的内部数据，包含所有门店外卖数据，以及公司内部其他的经营数据。既能利用大数据辅助经营，又产生了公司的数据资产。</view>
+</view>
+<image class='bannerImg' src='https://xcx.od888.cn/static/fixed/images/oddata-banner1.png'></image>
+<view class='banner2'>
+  <image class='bannerImg2' src='https://xcx.od888.cn/static/fixed/images/oddata-banner2.png'></image>
+</view>
+<view class='info'>  
+  <view class='info-text'>BI系统网址: <text>abc.od888.cn</text></view>
+   <view class='info-text'>未有账号:<text>立即体验>></text></view>
+    <view class='info-text'>已有账号:<text bindtap='loginBox'>马上登录>></text></view>
+  <view class='info-text1'>如需了解更多，可咨询客服（15715783088)</view>
+</view>
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showlogin}}">
+</view>
+<view class='loginBox animated bounceInDown' wx:if="{{showlogin}}">
+  <view class='inputItem'>
+    <image class='loginimg' src='/images/loginuser.png'></image>
+    <view class='loginhead'>
+    </view>
+    <input class='logininput' bindinput='getUserName' value='{{userName}}' placeholder='请输入登录账号/手机号' placeholder-style='font-size:22rpx;color:#999;'></input>
+  </view>
+   <view class='inputItem'>
+    <image class='loginimg' src='/images/loginpsd.png'></image>
+    <view class='loginhead'>
+    </view>
+    <input class='logininput' type='password' bindinput='getPassword' value='{{userPassword}}' placeholder='请输入登录密码' placeholder-style='font-size:22rpx;color:#999;'></input>
+  </view>
+  <view class='bottomitem '>
+    <view class='bottombtn' bindtap='loginBox'>取消</view>
+    <view class='bottombtn noright' bindtap='tologin'>登录</view>
+  </view>
+</view>

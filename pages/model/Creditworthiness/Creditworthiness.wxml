@@ -1,0 +1,173 @@
+<!--社区资信-->
+<view class='pageInfo'>
+  <view class='bannerView'>
+    <image src='https://xcx.od888.cn/static/fixed/images/sq-banner.png' class='bannerImg'></image>
+  </view>
+  <view class='chooseList'>
+    <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>找店面</view>
+    <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>找人才</view>
+    <view class="chooseList-item3 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>换闲置</view>
+     <view class="chooseList-item4 {{chooseItem==3?'chooseItem':''}}" data-type='3' bindtap='chooseType'>有话说</view>
+  </view>
+  <!-- 找店面 -->
+  <view class='animated bounceInLeft' wx:if="{{chooseItem == 0}}">
+    <view class='productList' style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{shopList}}" wx:key>
+        <view class='productList-item'>
+          <view class='product-head'>
+            <image src='{{item.user_photo}}' class='user-img'></image>
+            <view class='user-name'>{{item.name}}</view>
+            <view class='phone-num' bindtap='phonecallevent' data-phone='{{item.phone}}'>我要出底价，联系他</view>
+            <view class='phone-text'></view>
+          </view>
+          <view class='product-info'>
+            <view class='product-infoItem'>门店营业:
+              <text>{{item.type}}</text>
+            </view>
+            <view class='product-infoItem'>所在城市:
+              <text>{{item.city}}</text>
+            </view>
+            <view class='product-infoItem'>门店面积:
+              <text>{{item.area}}㎡</text>
+            </view>
+            <view class='product-infoItem'>租金区间:
+              <text>{{item.price}}元</text>
+            </view>
+            <view class='product-infoItem'>接受转让:
+              <text>{{item.transfer == 1 ? "是":"否"}}</text>
+            </view>
+            <view class='product-infoItem'>需要办证:
+               <text>{{item.registration == 1 ? "是":"否"}}</text>
+            </view>
+            <view class='product-infoItem2' >附加要求:
+              <text wx:if="{{item.note}}">{{item.note}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 找人才 -->
+  <view class='animated bounceInLeft' wx:if="{{chooseItem == 1}}">
+    <view class='productList' style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{memberList}}" wx:key>
+        <view class='productList-item'>
+          <view class='product-head'>
+            <image src='{{item.user_photo}}' class='user-img'></image>
+            <view class='user-name'>{{item.name}}</view>
+            <view class='phone-num' bindtap='phonecallevent' data-phone='{{item.phone}}'>我有推荐，联系他</view>
+          </view>
+          <view class='product-info'>
+            <view class='product-infoItem'>工种:
+              <text>{{item.technology}}</text>
+            </view>
+            <view class='product-infoItem'>工作内容:
+              <text>{{item.describe}}</text>
+            </view>
+            <view class='product-infoItem2'>工作时长:
+              <text>{{item.working_time}}</text>
+            </view>
+            <view class='product-infoItem2'>工作地点:
+              <text>{{item.address}}
+                        </text>
+            </view>
+            <view class='product-infoItem2'>薪资待遇:
+              <text>{{item.treatment}}
+                        </text>
+            </view>
+            <view class='product-infoItem2'>要求:
+              <text>{{item.requirements}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 换闲置 -->
+  <view class='animated bounceInRight' wx:if="{{chooseItem == 2}}">
+    <view class='productList' style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{ershouList}}" wx:key>
+        <view class='productList-item'>
+          <view class='product-head'>
+            <image src='{{item.user_photo}}' class='user-img'></image>
+            <view class='user-name'>{{item.name}}</view>
+            <view class='phone-num' bindtap='phonecallevent' data-phone='{{item.phone}}'>我有推荐，联系他</view>
+          </view>
+          <view class='product-info2'>
+            <view class='product2-img'>
+              <swiper class='product2-img' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" vertical="{{vertical}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+              <block wx:for="{{item.photo}}" wx:for-item="items" wx:key>
+                <swiper-item>
+                  <image class='product2-img-image' src="{{items.url}}" />
+                </swiper-item>
+              </block>
+            </swiper>
+            </view>
+            <view class='imgList2'>
+                <swiper class='imgList2-swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" vertical="{{vertical}}" display-multiple-items="{{item.photo.length > 1 ?'itemNum':'1' }}" interval="{{interval}}" circular="{{circular2}}" duration="{{duration}}">
+                <block wx:for="{{item.photo}}" wx:for-item="imgItem" wx:key>
+                  <swiper-item class="imgList2-swiper-item">
+                    <image class='imgList2-swiper-image' src="{{imgItem.url}}" />
+                  </swiper-item>
+                </block>
+              </swiper>
+            </view>
+           <view class='product2-infoItem'>物品:
+              <text>{{item.goods}}</text>
+            </view>
+            <view class='product2-infoItem'>价格:
+              <text>{{item.price}}元</text>
+            </view>
+            <view class='product2-infoItem'>所在城市:
+              <text>{{item.city}}</text>
+            </view>
+             <view class='product2-infoItem'>是否配送:
+              <text>{{item.courier == 1 ? "是":"否"}}</text>
+            </view>
+            <view class='product2-infoItem'>状态描述:
+              <text>{{item.abstract}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 有话说 -->
+  <view class='animated bounceInRight' wx:if="{{chooseItem == 3}}">
+    <view class='productList' style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{themeList}}" wx:key>
+       <view class='theme'>
+        <view class='theme-head'>
+          <image src='{{item.user_photo}}' class='consultation-Img'></image>
+          <view class='theme-headright'>
+            <view class='consultation-Name'>{{item.username}}</view>
+            <view class='consultation-upInfo'>
+              <view class='consultation-Time'>{{item.audit_at}}</view>
+              <view class='consultation-Address'>发起</view>
+            </view>
+          </view>
+          <view class='shareTheme' bindtap='shareTheme'>
+            <image class='shareImg' src='https://xcx.od888.cn/static/fixed/images/share.png'></image>
+            <button open-type='share'  bindtap='shareTheme' class='share-text'>转发话题</button>
+          </view>
+        </view>
+        <view class='theme-info' bindtap='todetail'>
+          <view class='theme-total'>话题:{{item.title}}</view>
+        </view>
+        <view class='theme-imgList'>
+          <block wx:for="{{item.photo}}" wx:for-item="items" wx:key>
+            <image class='theme-imgListItem' src='{{items.url}}'></image>
+          </block>
+        </view>
+        <view class='comment-list'>
+        <block wx:for-item="items" wx:for="{{item.abstract}}" wx:key>
+          <view class='comment-info'>{{items.name}}:{{items.value}}</view>
+        </block>
+        </view>
+      </view>
+    </block>
+    </view>
+  </view>
+  <view class='submitXq' bindtap='submitXq'>我要发布</view>
+  <view class='clear'></view>
+</view>

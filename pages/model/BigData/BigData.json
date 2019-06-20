@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "外卖大数据",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#A89FD6",
+  "usingComponents": {
+    "ec-canvas": "../../../ec-canvas/ec-canvas"
+  }
+}

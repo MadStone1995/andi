@@ -1,0 +1,106 @@
+page{
+  background-color: #F2F2F2;
+}
+.bannerView{
+  width:750rpx;
+  height:300rpx;
+ background:linear-gradient(180deg,rgba(250,197,175,1) 0%,rgba(250,197,175,0) 100%);
+}
+.bannerImg{
+  width:710rpx;
+  height:250rpx;
+  border-radius:10rpx;
+  margin: 20rpx 20rpx 30rpx 20rpx;
+}
+.chooseList{
+  width:750rpx;
+  height: 80rpx;
+  margin-bottom:20rpx;
+  color: #fff;
+}
+.chooseList-item1{
+  float: left;
+  height: 80rpx;
+  width: 230rpx;
+  background-color: #FAC5AF;
+  margin-left: 20rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.chooseList-item2{
+  float: left;
+  height: 80rpx;
+  width: 230rpx;
+  background-color: #FAC5AF;
+  margin: 0 10rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.chooseList-item3{
+  float: left;
+  height: 80rpx;
+  width: 230rpx;
+  background-color: #FAC5AF;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.chooseItem{
+  background-color: #E9875D;
+}
+.productList{
+  float: left;
+  width: 650rpx;
+  margin:0 20rpx;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+  color: #666666;
+  font-size: 22rpx;
+  background-color: #fff;
+}
+.productList-item{
+  width: 100%;
+  float: left;
+  border-bottom: 1rpx #DDDDDD solid;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+.product-img{
+  float: left;
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+}
+.product-img image{
+  width: 200rpx;
+  height: 200rpx;
+}
+.product-info{
+  float: left;
+  width: 430rpx;
+}
+.product-name{
+  color: #333333;
+  font-size: 26rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.phone-text{
+  float: left;
+  font-size: 24rpx;
+  color: #333333;
+  font-weight:500;
+}
+.phone-num{
+  float: left;
+  font-size: 24rpx;
+  color: #4EB74B;
+  text-decoration: underline;
+  margin-left: 5rpx;
+}

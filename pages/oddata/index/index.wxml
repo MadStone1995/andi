@@ -1,0 +1,49 @@
+<!--安心加盟-->
+<view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='notice'>
+  <view class='notice-info'>公告栏：本中心暂时只提供饿了么平台公开数据；数据更新预期半个月一次，以实际更新时间为准。</view>
+</view>
+<view class='navList'>
+<view class='navList-total'>外部数据</view>
+   <view class='navList-item'  bindtap='goto' data-id='1'>
+    <image class='navList-img' src='https://xcx.od888.cn/static/fixed/images/sqfx.png'></image>
+    <view class=''>外卖总览</view>
+  </view>
+    <view class='navList-item' bindtap='goto' data-id='0'>
+    <image class='navList-img' src='https://xcx.od888.cn/static/fixed/images/csgk.png'></image>
+    <view class=''>城市详情</view>
+  </view>
+   <view class='navList-item'  bindtap='goto' data-id='2'>
+    <image class='navList-img' src='https://xcx.od888.cn/static/fixed/images/plxq.png'></image>
+    <view class=''>品类详情</view>
+  </view>
+   <view class='navList-item'  bindtap='goto' data-id='3'>
+    <image class='navList-img' src='https://xcx.od888.cn/static/fixed/images/ppcx.png'></image>
+    <view class=''>品牌详情</view>
+  </view>
+</view>
+<view class='nbList'>
+  <view class='nbList-total'>内部数据</view>
+  <view class='nbList-item1'  bindtap='goto' data-id='4'>
+    <image class='nbList-itemImg' src='https://xcx.od888.cn/static/fixed/images/sjnb.png'></image>
+    <view class='nbList-text1'>商家内部数据</view>
+  </view>
+   <view class='nbList-item2'  bindtap='goto' data-id='5'>
+    <image class='nbList-itemImg' src='https://xcx.od888.cn/static/fixed/images/gsnb.png'></image>
+    <view class='nbList-text2'>公司经营数据</view>
+  </view>
+</view>
+<button open-type='contact' class='buttonItem'>
+  <view class='funList-item'>
+    <image src='/images/kefuinfo.png' class='kefuImg'></image>
+    <view class='kefutext'>在线客服</view>
+  </view>
+</button>

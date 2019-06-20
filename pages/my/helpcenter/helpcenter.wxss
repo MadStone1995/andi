@@ -1,0 +1,9 @@
+/* pages/my/helpcenter/helpcenter.wxss */
+page{
+  background-color: #F2F2F2;
+}
+.banner{
+  width: 750rpx;
+  height: 768rpx;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,302 @@
+<wxs src="./center.wxs" module="intercept" />
+<view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key>
+      <swiper-item>
+        <image  class='swiper-img' src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='content'>
+  <view class='content-left'>
+    <view class='weatherInfo'>
+    <view class='weatherInfo-imgtext'>{{weatherInfo.list[0].wea}}</view>
+      <!-- <image class='weatherInfo-img' src="https://xcx.od888.cn/static/fixed/tiqi/{{weatherInfo.wea_img}}.png"></image> -->
+      <view class='weatherInfo-temperature'>{{weatherInfo.list[0].tem}}</view>
+      <view class='weatherInfo-area'>{{address}} {{weatherInfo.wea}}</view>
+      <view class='weatherInfo-date'>{{weatherInfo.time}} {{weatherInfo.week}}</view>
+    </view>
+    <view class='date'>
+      <view class='date-info'>已有居民:{{membernum}}人</view>
+    </view>
+  </view>
+  <view class='content-right'>
+    <view class='right-total'>
+      <text class='right-totalItem'>社</text>
+      <text class='right-totalItem'>区</text>
+      <text class='right-totalItem'>宗</text>
+      <text class='right-totalItem'>旨</text>
+    </view>
+    <view class='right-text'>
+      <text class='right-textItem' decode="{{true}}">公平&nbsp; &nbsp;&nbsp; 公正 &nbsp; &nbsp; &nbsp;公开</text>
+      <view class='right-textItem'>数据/信息绝对真实、不可篡改</view>
+      <view class='right-textItem'>人人为社区，社区为人人</view>
+      <view class='right-textItem'>参与即贡献，贡献得收益</view>
+    </view>
+  </view>
+</view>
+<view class='wzjfimg' bindtap='towzjf'>
+  <image src='https://xcx.od888.cn/static/fixed/images/mall-banner1.png'></image>
+</view>
+<view class='nav-box'>
+  <view class='nav-total'>
+    <view class='total-line1'></view>
+    <view class='total-text'>
+      <text>社</text>
+      <text>区</text>
+      <text>导</text>
+      <text>航</text>
+    </view>
+    <view class='total-line2'></view>
+  </view>
+  <view class='nav-List'>
+    <image class='nav-listItem' bindtap='jumpTo' data-h5='0' src='https://xcx.od888.cn/static/fixed/images/nav1.png'></image>
+    <image class='nav-listItem' bindtap='jumpTo' data-h5='1' src='https://xcx.od888.cn/static/fixed/images/nav2.png'></image>
+     <image class='nav-listItem2' bindtap='jumpTo' data-h5='5' src='https://xcx.od888.cn/static/fixed/images/nav6.png'></image>
+
+    <image class='nav-listItem' bindtap='jumpTo' data-h5='3' src='https://xcx.od888.cn/static/fixed/images/nav4.png'></image>
+    <image class='nav-listItem' bindtap='jumpTo' data-h5='4' src='https://xcx.od888.cn/static/fixed/images/nav5.png'></image>
+        <image class='nav-listItem2' bindtap='jumpTo' data-h5='2' src='https://xcx.od888.cn/static/fixed/images/nav3.png'></image>
+   
+  </view>
+</view>
+<view class='details'>
+  <view class='tab'>
+    <view class="tab-item {{currentData==0 ? 'tab-active':''}}" data-current="0" bindtap='checkCurrent'>资讯</view>
+    <view class="tab-item {{currentData==1 ? 'tab-active':''}}" data-current="1" bindtap='checkCurrent'>信息</view>
+    <view class="tab-item {{currentData==2 ? 'tab-active':''}}" data-current="2" bindtap='checkCurrent'>话题</view>
+    <view class="tab-item {{currentData==3 ? 'tab-active':''}}" data-current="3" bindtap='checkCurrent'>视频</view>
+  </view>
+  <view wx:if="{{currentData == 0}}">
+    <block wx:for="{{newsList}}" wx:key>
+      <view class='consultation'>
+        <view class='consultation-head'>
+          <image lazy-load="true" src='{{item.user_photo}}' class='consultation-Img'></image>
+          <view class='consultation-headright'>
+            <view class='consultation-Name'>{{item.username}}</view>
+            <view class='consultation-upInfo'>
+              <view class='consultation-Time'>{{item.audit_at}}</view>
+              <view class='consultation-Address'>发布于{{item.address}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='consultation-info' data-id='{{item.article_id}}' bindtap='tonewDetail'>
+          <view wx:if="{{88 <= item.abstract.length}}" class='consultation-text' >{{intercept.substr(item.abstract)}} <text >查看详情</text></view>
+           <view wx:if="{{item.abstract.length < 88}}" class='consultation-text'>{{item.abstract}}<text class='jtou2'>>></text></view>
+        </view>
+        <view class='consultation-imgList'>
+          <block wx:for="{{item.photo}}" wx:for-item="items" wx:key>
+            <image lazy-load="true" class='consultation-imgListItem' src='{{items.url}}'></image>
+          </block>
+        </view>
+        <view class='browseInfo'>
+          <image class='browseImg' lazy-load="true" src='/images/browse.png'></image>
+          <view class='browse-num'>{{item.browse}}人浏览</view>
+          <view class='news-num'>{{item.replys}}</view>
+          <image class='newsImg'lazy-load="true" src='/images/news.png'></image>
+          <view class='good-num'>{{item.likes}}</view>
+          <image class='goodImg' lazy-load="true" src='/images/good.png'></image>
+          <view class='good-num'>{{item.collection}}</view>
+          <image class='goodImg' lazy-load="true" src='/images/collection.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{currentData == 1}}">
+    <block wx:for="{{infoHouseList}}" wx:key>
+    <!-- 房屋转让 -->
+      <view class='productList-item' wx:if="{{item.type == 1}}">
+        <view class='product-head'>
+          <image src='{{item.user_photo}}' class='consultation-userImg' lazy-load="true"></image>
+          <view class='user-Info'>
+            <view class='userInfo-name'>{{item.name}}</view>
+            <view class='userInfo-time'>{{item.audit_at}}</view>
+          </view>
+          <view class='phone-text' bindtap='phonecallevent' data-phone='{{item.phone}}'>我要出底价，联系他</view>
+        </view>
+        <view class='product-info'>
+          <view class='product-infoItem moreitem'>所在城市:
+            <text>{{item.city}}</text>
+          </view>
+          <view class='product-infoItem lessitem'>门店面积:
+            <text>{{item.area}}㎡</text>
+          </view>
+          <view class='product-infoItem moreitem'>租金区间:
+            <text>{{item.price}}元</text>
+          </view>
+          <view class='product-infoItem lessitem'>接受转让:
+            <text>是</text>
+          </view>
+          <view class='product-infoItem'>需要办证:
+            <text>是</text>
+          </view>
+        </view>
+        <view class='browseInfo2'>
+          <image class='browseImg' lazy-load="true" src='/images/browse.png'></image>
+          <view class='browse-num'>{{item.browse || 0}}人浏览</view>
+          <view class='news-num'>{{item.replys || 0}}</view>
+          <image class='newsImg' lazy-load="true" src='/images/news.png'></image>
+        </view>
+      </view>
+       <!-- 招聘信息 -->
+      <view class='productList-item' wx:if="{{item.type == 2}}">
+        <view class='product-head'>
+          <image src='{{item.user_photo}}' lazy-load="true" class='consultation-userImg'></image>
+          <view class='user-Info'>
+            <view class='userInfo-name'>{{item.name}}</view>
+            <view class='userInfo-time'>{{item.audit_at}}</view>
+          </view>
+          <view class='phone-text' bindtap='phonecallevent' data-phone='{{item.phone}}'>我有推荐，联系他</view>
+        </view>
+        <view class='product-info'>
+          <view class='product-infoItem'>公司:
+            <text>{{item.company}}</text>
+          </view>
+          <view class='product-infoItem'>职位:
+            <text>{{item.technology}}</text>
+          </view>
+          <view class='product-infoItem '>工作地点:
+            <text>{{item.address}}</text>
+          </view>
+          <view class='product-infoItem'>工作时长:
+            <text>{{item.working_time}}</text>
+          </view>
+           <view class='product-infoItem2'>工作内容:
+            <text>{{item.describe}}</text>
+          </view>
+            <view class='product-infoItem2'>薪资待遇:
+            <text>{{item.treatment}}</text>
+          </view>
+          <view class='product-infoItem2'>要求:
+            <text>{{item.requirements}}</text>
+          </view>
+        </view>
+        <view class='browseInfo2'>
+          <image class='browseImg' lazy-load="true" src='/images/browse.png'></image>
+          <view class='browse-num'>{{item.browse || 0}}人浏览</view>
+          <view class='news-num'>{{item.replys || 0}}</view>
+          <image class='newsImg' lazy-load="true" src='/images/news.png'></image>
+        </view>
+      </view>
+       <!-- 二手闲置 -->
+      <view class='productList-item' wx:if="{{item.type == 3}}">
+        <view class='product-head'>
+          <image lazy-load="true" src='{{item.user_photo}}' class='consultation-userImg'></image>
+          <view class='user-Info'>
+            <view class='userInfo-name'>{{item.name}}</view>
+            <view class='userInfo-time'>{{item.audit_at}}</view>
+          </view>
+          <view class='phone-text' bindtap='phonecallevent' data-phone='{{item.phone}}'>我想要，联系他</view>
+        </view>
+        <view class='product-info'>
+          <view class='product-imgList'>
+             <swiper class='imgList-box' indicator-dots="{{indicatorDots}}" 
+             autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}"                    duration="{{duration}}">
+            <block wx:for="{{item.photo}}" wx:for-item="items" wx:key>
+              <swiper-item>
+                <image lazy-load="true" class='imgList-img' src="{{items.url}}" />
+              </swiper-item>
+            </block>
+            </swiper>
+          </view>
+          <view class='product-infoItem'>商品名:
+            <text>{{item.goods}}</text>
+          </view>
+           <view class='product-infoItem'>商品简介:
+            <text>{{item.abstract}}</text>
+          </view>
+           <view class='product-infoItem'>价格:
+            <text>{{item.price}}</text>
+          </view>
+           <view class='product-infoItem'>所在地:
+            <text>{{item.city}}</text>
+          </view>
+           <view class='product-infoItem'>快递:
+            <text>{{item.courier==0 ? '否':'是'}}</text>
+          </view>
+        </view>
+        <view class='browseInfo2'>
+          <image lazy-load="true" class='browseImg' src='/images/browse.png'></image>
+          <view class='browse-num'>{{item.browse || 0}}人浏览</view>
+          <view class='news-num'>{{item.replys || 0}}</view>
+          <image lazy-load="true" class='newsImg' src='/images/news.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 话题 -->
+    <view wx:if="{{currentData == 2}}">
+    <block wx:for="{{themeList}}" wx:key>
+       <view class='theme'>
+        <view class='theme-head'>
+          <image lazy-load="true" src='{{item.user_photo}}' class='consultation-Img'></image>
+          <view class='theme-headright'>
+            <view class='consultation-Name'>{{item.username}}</view>
+            <view class='consultation-upInfo'>
+              <view class='consultation-Time'>{{item.audit_at}}</view>
+              <view class='consultation-Address'>发起</view>
+            </view>
+          </view>
+          <view class='shareTheme' bindtap='shareTheme'>
+            <image lazy-load="true" class='shareImg' src='https://xcx.od888.cn/static/fixed/images/share.png'></image>
+            <!-- <view class='share-text'>转发话题</view> -->
+            <button open-type='share'  bindtap='shareTheme' class='share-text'>转发话题</button>
+          </view>
+        </view>
+        <view class='theme-info' data-id='{{item.article_id}}' bindtap='toTheme'>
+          <view class='theme-total'>话题:{{item.title}}</view>
+        </view>
+        <view class='theme-imgList'>
+          <block wx:for="{{item.photo}}" wx:for-item="items" wx:key>
+            <image lazy-load="true" class='theme-imgListItem' src='{{items.url}}'></image>
+          </block>
+        </view>
+        <view class='comment-list'>
+        <block wx:for-item="items" wx:for="{{item.abstract}}" wx:key>
+          <view class='comment-info'>{{items.name}}:{{items.value}}</view>
+        </block>
+        </view>
+      </view>
+    </block>
+  </view>
+   <!-- 视频 -->
+  <view wx:if="{{currentData == 3}}">
+    <block wx:for="{{videoList}}" wx:key>
+       <view class='consultation'>
+        <view class='consultation-head'>
+          <image lazy-load="true" src='{{item.user_photo}}' class='consultation-Img'></image>
+          <view class='consultation-headright'>
+            <view class='consultation-Name'>{{item.username}}</view>
+            <view class='consultation-upInfo'>
+              <view class='consultation-Time'>{{item.audit_at}}</view>
+              <view class='consultation-Address'>发布于{{item.hot}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='consultation-info' >
+          <view class='consultation-text'>{{item.goods}} <text data-id='{{item.hotvideo_id}}' wx:if="{{item.type == 1}}"  bindtap='todetail'>查看详情</text></view>
+        </view>
+        <view class='consultation-imgList'>
+          	<video style='width:500rpx;' custom-cache="{{false}}" poster="{{item.cover[0].url? item.cover[0].url: 'https://xcx.od888.cn/static/video_photo.jpg'}}"   id="{{index}}"  bindtap='bindplay' src="{{item.video[0].url}}"></video>
+        </view>
+        <view class='browseInfo'>
+          <image  lazy-load="true" class='browseImg' src='/images/browse.png'></image>
+          <view class='browse-num'>{{item.browse}}人浏览</view>
+          <view class='news-num'>{{item.comments}}</view>
+          <image lazy-load="true" class='newsImg' src='/images/news.png'></image>
+          <view class='good-num'>{{item.like}}</view>
+          <image lazy-load="true" class='goodImg' src='/images/good.png'></image>
+          <view class='good-num'>{{item.collection}}</view>
+          <image lazy-load="true" class='goodImg' src='/images/collection.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<button open-type='contact' class='buttonItem'>
+  <view class='funList-item'>
+    <image lazy-load="true" src='/images/kefuinfo.png' class='kefuImg'></image>
+    <view class='kefutext'>在线客服</view>
+  </view>
+</button>

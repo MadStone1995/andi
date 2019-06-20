@@ -1,0 +1,329 @@
+page{
+  background-color: #fff;
+}
+radio .wx-radio-input{ 
+  /* 自定义样式.... */
+    height: 40rpx; 
+    width: 40rpx;
+    margin-top: -4rpx;
+    border-radius: 50%;
+    border: 2rpx solid #999;
+    background: transparent;
+ }
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   border: none;
+   background: #496DAA;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: #496DAA;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.headerInfo{
+  width:750rpx;
+  height:314rpx;
+  position:relative;
+  background-color:#fff;
+  margin-bottom:45rpx;
+}
+.header-img{
+  width: 750rpx;
+  height: 314rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerInfo-item{
+  position: absolute;
+  height: 50rpx;
+  top: 95rpx;
+  left: 20rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.headerInfo-item2{
+  position: absolute;
+  height: 50rpx;
+  top: 160rpx;
+  left: 20rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.item-total{
+  float: left;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #666;
+  font-size: 30rpx;
+}
+.radio-group {
+  float:left;
+}
+.mode{
+  float: left;
+  margin-left: 30rpx;
+}
+.addressInfo{
+  width:300rpx;
+  height:50rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 50rpx;
+  border:1rpx solid rgba(153,153,153,1);
+  border-radius:5rpx;
+  box-sizing: border-box;
+}
+.submitInfo{
+  position: absolute;
+  top: 250rpx;
+  left: 20rpx;
+  width:710rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  background:linear-gradient(-90deg,rgba(149,180,232,1) 0%,rgba(73,109,170,1) 100%);
+  border-radius:35rpx;
+}
+.pp-total{
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+}
+.pp-name{
+  float: left;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.input{
+  position: absolute;
+  top: 0;
+  left: 230rpx;
+  padding: 0 20rpx;
+  width:300rpx;
+  height:50rpx;
+  min-height: 50rpx;
+  border:1rpx solid rgba(153,153,153,1);
+  border-radius:5rpx;
+}
+.select {
+  border: 1px solid #9dd3fa;
+  position: absolute;
+  width: 100%;
+  top: 58rpx;
+  left: 230rpx;
+  background-color: white;
+  z-index: 1;
+  box-sizing: border-box;
+  max-height: 330rpx;
+  overflow-y: scroll;
+}
+
+.select-menu {
+  height: 40rpx;
+  width: 100%;
+  overflow: hidden;
+  line-height: 40rpx;
+  /* border-bottom: 1px solid black; */
+  font-size: 0.7rem;
+  text-align: left;
+}
+.history-table-wrap {
+  /* position: absolute; */
+  width: 710rpx;
+  margin-left: 20rpx;
+  margin-top: 2%;
+}
+
+/* 表格代码   */
+
+.table {
+  /* border:1px solid #dadada; */
+  border-right: 0;
+  border-bottom: 0;
+  width: 100%;
+  /* height: 100%; *//* margin-left: 1%; */
+}
+
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.th, .td {
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.td5,.th1,.td1{
+   border-left: 1px solid #dadada;
+   box-sizing: border-box;
+}
+.th1, .th2, .th3, .td1, .td2, .td3 {
+  /* width: 32%; */
+}
+
+.th {
+  /* 9ff048  82a6f5  */
+  font-weight: 800;
+  background-color: #496DAA;
+  font-size: 25rpx;
+  color: white;
+}
+
+.td {
+  font-size: 25rpx;
+  color: black;
+}
+.container{
+  float: left;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 650rpx;
+  margin-top: 30rpx;
+
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+.content{
+  float: left;
+  width:750rpx;
+  height:834rpx;
+  position:relative;
+  background-color:#fff;
+  margin-bottom:45rpx;
+}
+.content2{
+  float: left;
+  width:750rpx;
+  height:834rpx;
+  position:relative;
+  background-color:#fff;
+  margin-bottom:65rpx;
+}
+.content-total{
+ position: absolute;
+ top: 30rpx;
+ left: 20rpx;
+  width:710rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  font-size:30rpx;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.xz-total{
+  position: absolute;
+   top: 100rpx;
+  left: 20rpx;
+  width:150rpx;
+  height:50rpx;
+  line-height: 50rpx;
+  font-size:30rpx;
+  color:rgba(102,102,102,1);
+}
+.xz-Info{
+  position: absolute;
+  top: 100rpx;
+  left: 170rpx;
+  min-width:280rpx;
+  height:50rpx;
+  border:1rpx solid rgba(153,153,153,1);
+  border-radius:5rpx;
+  color: #999999;
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  line-height: 50rpx;
+}
+.submitInfo2{
+  position: absolute;
+  top: 200rpx;
+  left: 20rpx;
+  width:710rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  background:linear-gradient(-90deg,rgba(149,180,232,1) 0%,rgba(73,109,170,1) 100%);
+  border-radius:35rpx;
+}
+.history-table-wrap2 {
+  position: absolute;
+  top: 294rpx;
+  left: 20rpx;
+  height: 500rpx;
+  width: 710rpx;
+}
+.logo_ground {
+  position:fixed;
+  width:100%;
+  height:60rpx;
+  line-height:60rpx;
+  bottom:0px;
+  font-size:28rpx;
+  z-index:0;
+  color:#fff;
+  background:#496DAA;
+}
+.footer {
+  text-align: center;
+}
+.loading{
+  font-size: 24rpx;
+  text-align: center;
+  width: 710rpx;
+  margin-left: 20rpx;
+  background-color: #fff;
+}
+@keyframes loading{
+   0%{
+     transform: rotate(0deg);
+     }
+    100%{
+     transform: rotate(360deg);
+     }
+ }
+.loadMore{
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+  width: 30rpx;
+  height: 30rpx;
+  border: 5rpx solid #9F9F9F;
+  border-top: 5rpx solid #fff;
+  animation: loading 1s infinite;
+  vertical-align:middle;
+  display:inline-block;
+  margin-right:10rpx;
+  margin-top:-5rpx;
+}
+.updatetime{
+  font-size: 27rpx;
+  width: 100%;
+  text-align: center;
+}

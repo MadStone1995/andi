@@ -1,0 +1,118 @@
+<view class='headerInfo'>
+  <image src='/images/city-bg.png' class='header-img'></image>
+   <view class='pp-total'>品牌概况</view>
+  <view class='headerInfo-item'>
+    <view class='item-total'>选择平台：</view>
+     <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{items}}" wx:key>
+        <radio value="{{item.name}}" checked="{{item.checked}}" disabled="{{item.value == '美团'}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+    <view class='headerInfo-item2'>
+      <view class='item-total'>请输入品牌名称:</view>
+       <view class='pp-name'>
+    <input class='input' type='text' bindinput="inputName" value='{{value2}}' name="name" placeholder="输入关键字"></input>
+    <view wx:if="{{flag}}" class='select'>
+      <block wx:for="{{menu}}" wx:key="{{index}}">
+        <view class='select-menu' bindtap='select' data-name='{{item.shop_name_short}}'>{{item.shop_name_short}}</view>
+      </block>
+    </view>
+  </view>
+  </view>
+  <button class='submitInfo'  bindtap='formSubmit'>确认提交</button>
+</view>
+ <view class='updatetime' wx:if="{{update_time !=''}}">更新时间:{{update_time}}</view>
+<view class='history-table-wrap'>
+  <view class="table">
+    <view class="tr">
+      <view class="th th5">全国商家总数</view>
+      <view class="th th6">月销总量</view>
+      <view class="th th7">日均销量</view>
+    </view>
+    <view class="tr">
+      <view class="td td5">{{ppgkInfo.sum.count || 0}}</view>
+      <view class="td td6">{{ppgkInfo.sum.month || 0}}</view>
+      <view class="td td7">{{ppgkInfo.sum.day|| 0}}</view>
+    </view>
+  </view>
+</view>
+<view class='container'>
+  <ec-canvas id="treeEchart" canvas-id="mychart-area" ec="{{ ec }}"></ec-canvas>
+</view>
+<view class='content'>
+   <image src='/images/city-bg.png' class='header-img'></image>
+  <view class='content-total'>品牌城市情报</view>
+  <view class='xz-total'>选择城市：</view>
+  <view class="xz-Info" bindtap='chooseAddress'>
+    <text>{{province == ''?'点击选择城市':province + '-' + city }}</text>
+  </view>
+  <button class='submitInfo2'  bindtap='queryCity'>确认提交</button>
+  <view class='history-table-wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th1">商家名</view>
+        <view class="th th2">月销总量</view>
+        <view class="th th3">日均销量</view>
+        <view class="th th3">所在区域</view>
+      </view>
+       <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:410rpx;" class='shopInfo'>
+    <view class="tr" wx:for="{{cityInfo}}" wx:key="{{index}}">
+        <view class="td td1">{{item.name}}</view>
+        <view class="td td2">{{item.month}}</view>
+        <view class="td td3">{{item.day}}</view>
+        <view class="td td3">{{item.address}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+      
+    </view>
+  </view>
+</view>
+<view class='content2'>
+   <image src='/images/city-bg.png' class='header-img'></image>
+  <view class='content-total'>查看该城市其他品牌</view>
+  <view class='xz-total'>选择品类：</view>
+   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker xz-Info">
+          <view class='typeInfo'>{{productType || '点此选择品类'}}</view>
+        </view>
+      </picker>
+  <!-- <view class="xz-Info" bindtap='chooseAddress'>
+    <text>{{province == ''?'点击选择城市':province + '-' + city }}</text>
+  </view> -->
+  <button class='submitInfo2'  bindtap='getPpList'>确认提交</button>
+  <view class='history-table-wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th1">品牌名</view>
+        <view class="th th2">商家数量</view>
+        <view class="th th3">月销总量</view>
+        <view class="th th3">日均销量</view>
+      </view>
+       <scroll-view scroll-y bindscrolltolower="loadMoreShop2"style="height:410rpx;" class='shopInfo'>
+    <view class="tr" wx:for="{{ppList}}" wx:key="{{index}}">
+        <view class="td td1">{{item.shop_name_short}}</view>
+         <view class="td td3">{{item.count}}</view>
+        <view class="td td2">{{item.month}}</view>
+        <view class="td td3">{{item.day}}</view>
+       
+      </view>
+    <view class='loading' wx:if="{{loading2}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+    </view>
+  </view>
+</view>
+<view class="logo_ground">
+  <view class='footer'>
+    <view>如需下载数据请联系客服</view>
+  </view>
+</view>
+<area_picker_two isshow="{{isshow}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker_two>

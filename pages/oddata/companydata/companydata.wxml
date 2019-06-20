@@ -1,0 +1,280 @@
+<view class='chooseList'>
+  <view class="chooseList-item {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>外卖数据</view>
+  <view class='itemline'></view>
+  <view class="chooseList-item {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>招商数据</view>
+  <view class='itemline'></view>
+  <view class="chooseList-item {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>加盟商采购</view>
+</view>
+<!-- 外卖数据 -->
+<view class='' wx:if="{{chooseItem == 0}}">
+  <view class='platList'>
+    <view class="platItem mright {{choosePlat==0?'choosePlat':''}}" data-type='0' bindtap='choosePlat'>饿了么平台数据</view>
+    <view class="platItem {{choosePlat==1?'choosePlat':''}}" data-type='1' bindtap='choosePlat'>美团平台数据</view>
+  </view>
+  <view class='productList animated bounceInLeft' wx:if="{{choosePlat == 0}}">
+    <view class='shopInfo'>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop1.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>门店数量</view>
+          <view class='num-detail'>{{takeawayData.sum.count_ele || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop2.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>销量</view>
+          <view class='num-detail'>{{takeawayData.sum.sale_ord_ele || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item'>
+        <image class='itemimg' src='/images/shop3.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>营收</view>
+          <view class='num-detail'>{{takeawayData.sum.revenue_ord_ele || 0}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='shopNumList'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th1">店铺名</view>
+          <view class="th td1">有效单量</view>
+          <view class="th td1">有效营收</view>
+          <view class="th td1">客单价</view>
+          <view class="th td1">曝光数</view>
+          <view class="th td1">入店数</view>
+          <view class="th td1">下单数</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.eleme}}" wx:key>
+          <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+            <view class="td td1">{{item.xiadan || 0}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='productList animated bounceInRight' wx:if="{{choosePlat == 1}}">
+    <view class='shopInfo'>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop1.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>门店数量</view>
+          <view class='num-detail'>{{takeawayData.sum.count_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop2.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>销量</view>
+          <view class='num-detail'>{{takeawayData.sum.sale_ord_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item'>
+        <image class='itemimg' src='/images/shop3.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>营收</view>
+          <view class='num-detail'>{{takeawayData.sum.revenue_ord_mei || 0}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='shopNumList'>
+         <view class="table">
+        <view class="tr">
+          <view class="th th1">店铺名</view>
+          <view class="th td1">有效单量</view>
+          <view class="th td1">有效营收</view>
+          <view class="th td1">客单价</view>
+          <view class="th td1">曝光数</view>
+          <view class="th td1">入店数</view>
+          <view class="th td1">下单数</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.meituan}}" wx:key>
+          <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+            <view class="td td1">{{item.xiadan || 0}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 招商数据 -->
+<view class='' wx:if="{{chooseItem == 1}}">
+  <view class='platList'>
+    <view class="platItem mright {{chooseJm==0?'choosePlat':''}}" data-type='0' bindtap='chooseJm'>已加盟商家</view>
+    <view class="platItem {{chooseJm==1?'choosePlat':''}}" data-type='1' bindtap='chooseJm'>意向加盟商</view>
+  </view>
+  <view class='productList animated bounceInLeft' wx:if="{{choosePlat == 0}}">
+    <view class='shopNumList'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th1">加盟商名称</view>
+          <view class="th td1">联系电话</view>
+          <view class="th td1">地址</view>
+          <view class="th td1">负责人</view>
+          <view class="th td1">备注</view>
+          <view class="th td1">联系时间</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.eleme}}" wx:key>
+          <!-- <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+          </view> -->
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='productList animated bounceInRight' wx:if="{{choosePlat == 1}}">
+    <view class='shopInfo'>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop1.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>门店数量</view>
+          <view class='num-detail'>{{takeawayData.sum.count_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop2.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>销量</view>
+          <view class='num-detail'>{{takeawayData.sum.sale_ord_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item'>
+        <image class='itemimg' src='/images/shop3.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>营收</view>
+          <view class='num-detail'>{{takeawayData.sum.revenue_ord_mei || 0}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='shopNumList'>
+         <view class="table">
+        <view class="tr">
+           <view class="th th1">加盟商名称</view>
+          <view class="th td1">联系电话</view>
+          <view class="th td1">地址</view>
+          <view class="th td1">负责人</view>
+          <view class="th td1">备注</view>
+          <view class="th td1">联系时间</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.meituan}}" wx:key>
+          <!-- <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+            <view class="td td1">{{item.xiadan || 0}}</view>
+          </view> -->
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 加盟商采购 -->
+<view class='' wx:if="{{chooseItem == 2}}">
+  <view class='platList'>
+    <view class="platItem mright {{chooseCg==0?'choosePlat':''}}" data-type='0' bindtap='chooseCg'>昨日采购数</view>
+    <view class="platItem {{chooseCg==1?'choosePlat':''}}" data-type='1' bindtap='chooseCg'>采购对账单</view>
+  </view>
+  <view class='productList animated bounceInLeft' wx:if="{{choosePlat == 0}}">
+    <view class='shopNumList'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th1">店铺名</view>
+          <view class="th td1">有效单量</view>
+          <view class="th td1">有效营收</view>
+          <view class="th td1">客单价</view>
+          <view class="th td1">曝光数</view>
+          <view class="th td1">入店数</view>
+          <view class="th td1">下单数</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.eleme}}" wx:key>
+          <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+            <view class="td td1">{{item.xiadan || 0}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='productList animated bounceInRight' wx:if="{{choosePlat == 1}}">
+    <view class='shopInfo'>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop1.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>门店数量</view>
+          <view class='num-detail'>{{takeawayData.sum.count_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item mright2'>
+        <image class='itemimg' src='/images/shop2.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>销量</view>
+          <view class='num-detail'>{{takeawayData.sum.sale_ord_mei || 0}}</view>
+        </view>
+      </view>
+      <view class='shopInfo-item'>
+        <image class='itemimg' src='/images/shop3.png'></image>
+        <view class='item-num'>
+          <view class='num-total'>营收</view>
+          <view class='num-detail'>{{takeawayData.sum.revenue_ord_mei || 0}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='shopNumList'>
+         <view class="table">
+        <view class="tr">
+          <view class="th th1">店铺名</view>
+          <view class="th td1">有效单量</view>
+          <view class="th td1">有效营收</view>
+          <view class="th td1">客单价</view>
+          <view class="th td1">曝光数</view>
+          <view class="th td1">入店数</view>
+          <view class="th td1">下单数</view>
+        </view>
+        <block wx:for="{{takeawayData.shop.meituan}}" wx:key>
+          <view class="tr">
+            <view class="td td1 {{item.effective_name == -1 ? 'red':''}}">{{item.name || ''}} </view>
+            <view class="td td1">{{item.effective || 0}}<view class="stateinfo {{item.effective_state == 1 ? 'green':''}} {{item.effective_state == -1 ? 'red':''}}">
+            {{ item.effective_state == 1 ? "↑":""}}{{ item.effective_state == -1 ? "↓":""}} </view></view>
+            <view class="td td1">{{item.revenue || 0}}</view>
+            <view class="td td1">{{item.the_guest_unit_price || 0}}</view>
+            <view class="td td1">{{item.baoguang || 0}}</view>
+            <view class="td td1">{{item.daodian || 0}}</view>
+            <view class="td td1">{{item.xiadan || 0}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

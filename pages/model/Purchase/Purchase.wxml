@@ -1,0 +1,72 @@
+<!--底价采购-->
+<view class='bannerView'>
+  <image src='https://xcx.od888.cn/static/fixed/images/dj-banner.png' class='bannerImg'></image>
+</view>
+<view class='chooseList'>
+  <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>餐具包材</view>
+  <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>酒水饮料</view>
+  <view class="chooseList-item3 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>米面粮油</view>
+</view>
+<!-- 餐具包材 -->
+<view class='productList animated bounceInLeft' wx:if="{{chooseItem == 0}}">
+   <block wx:for="{{productList}}" wx:key>
+      <view class='productList-item'>
+        <view class='product-img'>
+          <image src='{{item.img}}'></image>
+        </view>
+        <view class='product-info'>
+          <view class='product-name'>筷子四件套</view>
+          <view class='product-unit'>规格：1200件/箱</view>
+          <view class='product-price'>价格：¥213</view>
+          <view class='product-company'>供应商：河南XXX公司</view>
+          <view class='product-area'>配送区域：全国范围</view>
+          <view class='product-phone'>
+            <view class='phone-text'>我要出底价，联系他</view>
+             <view class='phone-num' bindtap='phonecallevent' data-phone='15521292727'>15521292727</view>
+          </view>
+        </view>
+      </view>
+    </block>
+</view>
+<!-- 米面粮油 -->
+<view class='productList animated bounceInRight' wx:if="{{chooseItem == 1}}">
+ <block wx:for="{{productList}}" wx:key>
+      <view class='productList-item'>
+        <view class='product-img'>
+          <image src='{{item.img}}'></image>
+        </view>
+        <view class='product-info'>
+          <view class='product-name'>筷子四件套</view>
+          <view class='product-unit'>规格：1200件/箱</view>
+          <view class='product-price'>价格：¥213</view>
+          <view class='product-company'>供应商：河南XXX公司</view>
+          <view class='product-area'>配送区域：全国范围</view>
+          <view class='product-phone'>
+            <view class='phone-text'>我要出底价，联系他</view>
+            <view class='phone-num' bindtap='phonecallevent' data-phone='15521292727'>15521292727</view>
+          </view>
+        </view>
+      </view>
+    </block>
+</view>
+<!-- 米面粮油 -->
+<view class='productList animated bounceInRight' wx:if="{{chooseItem == 2}}">
+  <block wx:for="{{productList}}" wx:key>
+      <view class='productList-item'>
+        <view class='product-img'>
+          <image src='{{item.img}}'></image>
+        </view>
+        <view class='product-info'>
+          <view class='product-name'>筷子四件套</view>
+          <view class='product-unit'>规格：1200件/箱</view>
+          <view class='product-price'>价格：¥213</view>
+          <view class='product-company'>供应商：河南XXX公司</view>
+          <view class='product-area'>配送区域：全国范围</view>
+          <view class='product-phone'>
+            <view class='phone-text'>我要出底价，联系他</view>
+            <view class='phone-num' bindtap='phonecallevent' data-phone='15521292727'>15521292727</view>
+          </view>
+        </view>
+      </view>
+    </block>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "品牌查询",
+  "usingComponents": {
+    "ec-canvas": "../../../ec-canvas/ec-canvas",
+    "area_picker_two": "/component/area_picker_two/area_picker_two"
+  }
+}

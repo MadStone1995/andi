@@ -1,0 +1,156 @@
+<view class="container">
+  <view class="page-body">
+  <view class=''>
+   <view class='inputItem' wx:if="{{releaseType != 3}}">
+    <view class='inputItem-total nobottom'>联系人</view>
+    <input placeholder='请输入' bindinput='inputName' class='inputItem-text nobottom' value='{{infoDetail.name}}'></input>
+   </view>
+    <view class='inputItem'  wx:if="{{releaseType != 3}}">
+    <view class='inputItem-total nobottom'>联系方式</view>
+    <input placeholder='请输入' bindinput='inputPhone' class='inputItem-text nobottom' value='{{infoDetail.phone}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 0}}">
+    <view class='inputItem-total nobottom'>门店营业</view>
+    <input placeholder='请输入' bindinput='inputType' class='inputItem-text nobottom' value='{{infoDetail.type}}'></input>
+   </view>
+   <view class='inputItem' wx:if="{{releaseType == 0}}">
+    <view class='inputItem-total nobottom'>门店面积</view>
+    <input placeholder='单位㎡' bindinput='inputArea' class='inputItem-text' value='{{infoDetail.area}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 0}}">
+    <view class='inputItem-total nobottom '>租金区间</view>
+    <input placeholder='最低' bindinput='inputFirstrent' class='inputItem-text2' value='{{infoDetail.firstrent}}'></input>
+    <view class='ljview'>-</view>
+       <input placeholder='最高' bindinput='inputAbortrent' class='inputItem-text2' value='{{infoDetail.abortrent}}'></input>
+   </view>
+     <view class='inputItem' wx:if="{{releaseType == 0}}">
+    <view class='inputItem-total nobottom'>接受转让</view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name" >
+    <view class="picker inputItem-text nobottom">
+     {{infoDetail.transfer == 1 ? "是":"否"}}
+    </view>
+  </picker>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 0}}">
+    <view class='inputItem-total'>需要办证</view>
+     <picker bindchange="bindPickerChange2" value="{{index}}" range="{{array}}" range-key="name" >
+      <view class="picker inputItem-text">
+      {{infoDetail.registration  == 1 ? "是":"否"}}
+      </view>
+    </picker>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>职位</view>
+    <input placeholder='请输入' bindinput='inputTechnology' class='inputItem-text' value='{{infoDetail.technology}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>工作内容</view>
+    <input placeholder='请输入' bindinput='inputDescribe' class='inputItem-text' value='{{infoDetail.describe}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>公司名称</view>
+    <input placeholder='请输入' bindinput='inputCompany' class='inputItem-text' value='{{infoDetail.company}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>工作地点</view>
+    <input placeholder='请输入' bindinput='inputAddress' class='inputItem-text' value='{{infoDetail.address}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>工作时长</view>
+    <input placeholder='请输入' bindinput='inputWorkingtime' class='inputItem-text' value='{{infoDetail.working_time}}'></input>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>薪资待遇</view>
+    <input placeholder='请输入' bindinput='inputTreatment' class='inputItem-text' value='{{infoDetail.treatment}}'></input>
+   </view>
+     <view class='inputItem' wx:if="{{releaseType == 1}}">
+    <view class='inputItem-total'>要求</view>
+    <textarea placeholder='请输入' bindinput='inputRequirements' class='inputItem-textarea' value='{{infoDetail.requirements}}'></textarea>
+   </view>
+    <view class='inputItem' wx:if="{{releaseType == 2}}">
+    <view class='inputItem-total'>商品名</view>
+    <input placeholder='请输入' bindinput='inputGoods' class='inputItem-text' value='{{infoDetail.goods}}'></input>
+   </view>
+    <!-- <input placeholder='标题...' bindinput='inputTitle' class='total' value='{{infoDetail.title}}'></input> -->
+  </view>
+   <!-- <textarea placeholder='资讯简介...' value='{{infoDetail.abstract}}' bindinput='inputAbstract' class='textInfo'></textarea> -->
+  <view class='inputItem' wx:if="{{releaseType == 3}}">
+    <view class='inputItem-total'>话题内容</view>
+    <input placeholder='请输入' bindinput='inputTitle' class='inputItem-text' value='{{infoDetail.title}}'></input>
+   </view>
+  <view class='imgList' wx:if="{{releaseType == 2 || releaseType == 3}}">
+  <view class='imgtotal'>上传展示图片(长按删除)</view>
+    <block wx:for="{{imgPaths}}"wx:key="{{index}}">
+      <view class='imgItem'>
+        <image src='{{item.url}}' class="uploadImg" data-id='{{index}}' bindlongtap='deleteImg'></image>
+      </view>
+    </block>
+    <view class='addImg' wx:if="{{imgPaths.length < 6}}" bindtap='uploadImg'>+</view>
+  </view>
+  <view class='inputItem' wx:if="{{releaseType == 2}}">
+    <view class='inputItem-total'>商品简介</view>
+    <input placeholder='请输入' bindinput='inputAbstract' class='inputItem-text' value='{{infoDetail.abstract}}'></input>
+   </view>
+   <view class='inputItem' wx:if="{{releaseType == 2}}">
+    <view class='inputItem-total'>商品价格</view>
+    <input placeholder='请输入' bindinput='inputPrice' class='inputItem-text' value='{{infoDetail.price}}'></input>
+   </view>
+   <view class='inputItem' wx:if="{{releaseType == 2}}">
+    <view class='inputItem-total'>是否快递</view>
+     <picker bindchange="bindPickerChange3" value="{{index}}" range="{{array}}" range-key="name" >
+      <view class="picker inputItem-text">
+      {{infoDetail.courier  == 1 ? "是":"否"}}
+      </view>
+    </picker>
+   </view>
+  <view></view>
+    <view class='wrapper'>
+      <!-- <view class='toolbar' bindtap="format">
+        <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+        <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+        <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+        <i class="iconfont icon-zitishanchuxian {{formats.strike ? 'ql-active' : ''}}" data-name="strike"></i>
+        <i class="iconfont icon-zuoduiqi {{formats.align === 'left' ? 'ql-active' : ''}}" data-name="align" data-value="left"></i>
+        <i class="iconfont icon-juzhongduiqi {{formats.align === 'center' ? 'ql-active' : ''}}" data-name="align" data-value="center"></i>
+        <i class="iconfont icon-youduiqi {{formats.align === 'right' ? 'ql-active' : ''}}" data-name="align" data-value="right"></i>
+        <i class="iconfont icon-zuoyouduiqi {{formats.align === 'justify' ? 'ql-active' : ''}}" data-name="align" data-value="justify"></i>
+        <i class="iconfont icon-line-height {{formats.lineHeight ? 'ql-active' : ''}}" data-name="lineHeight" data-value="2"></i>
+        <i class="iconfont icon-Character-Spacing {{formats.letterSpacing ? 'ql-active' : ''}}" data-name="letterSpacing" data-value="2em"></i>
+        <i class="iconfont icon-722bianjiqi_duanqianju {{formats.marginTop ? 'ql-active' : ''}}" data-name="marginTop" data-value="20px"></i>
+        <i class="iconfont icon-723bianjiqi_duanhouju {{formats.micon-previewarginBottom ? 'ql-active' : ''}}" data-name="marginBottom" data-value="20px"></i>
+        <i class="iconfont icon-clearedformat" bindtap="removeFormat"></i>
+        <i class="iconfont icon-font {{formats.fontFamily ? 'ql-active' : ''}}" data-name="fontFamily" data-value="Pacifico"></i>
+        <i class="iconfont icon-fontsize {{formats.fontSize === '24px' ? 'ql-active' : ''}}" data-name="fontSize" data-value="24px"></i>
+
+        <i class="iconfont icon-text_color {{formats.color === '#0000ff' ? 'ql-active' : ''}}" data-name="color" data-value="#0000ff"></i>
+        <i class="iconfont icon-fontbgcolor {{formats.backgroundColor === '#00ff00' ? 'ql-active' : ''}}" data-name="backgroundColor" data-value="#00ff00"></i>
+
+        <i class="iconfont icon-date" bindtap="insertDate"></i>
+        <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+        <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+        <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+        <i class="iconfont icon-undo" bindtap="undo"></i>
+        <i class="iconfont icon-redo" bindtap="redo"></i>
+
+        <i class="iconfont icon-outdent" data-name="indent" data-value="-1"></i>
+        <i class="iconfont icon-indent" data-name="indent" data-value="+1"></i>
+        <i class="iconfont icon-fengexian" bindtap="insertDivider"></i>
+        <i class="iconfont icon-charutupian" bindtap="insertImage"></i>
+        <i class="iconfont icon-format-header-1 {{formats.header === 1 ? 'ql-active' : ''}}" data-name="header" data-value="{{1}}"></i>
+        <i class="iconfont icon-zitixiabiao {{formats.script === 'sub' ? 'ql-active' : ''}}" data-name="script" data-value="sub"></i>
+        <i class="iconfont icon-zitishangbiao {{formats.script === 'super' ? 'ql-active' : ''}}" data-name="script" data-value="super"></i>
+        <i class="iconfont icon-quanping"></i> 
+        <i class="iconfont icon-shanchu" bindtap="clear"></i>
+        <i class="iconfont icon-direction-rtl {{formats.direction === 'rtl' ? 'ql-active' : ''}}" data-name="direction" data-value="rtl"></i>
+
+      </view> -->
+<!-- 
+      <editor id="editor" class="ql-container" placeholder="{{placeholder}}" showImgSize showImgToolbar showImgResize bindstatuschange="onStatusChange"  read-only="{{readOnly}}" bindinput="inputDetail" bindready="onEditorReady">
+      </editor> -->
+      <view>
+        <!-- <button bindtap="readOnlyChange">{{readOnly ? '可写':'只读'}}</button> -->
+        <button class='subbtn' bindtap='submitInfo'>提交审核</button>
+      </view>
+    </view>
+  </view>
+</view>

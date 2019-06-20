@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我想开店",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#B9DAC7",
+  "usingComponents": {
+    "ec-canvas": "../../../ec-canvas/ec-canvas",
+    "area_picker_two": "/component/area_picker_two/area_picker_two"
+  }
+}

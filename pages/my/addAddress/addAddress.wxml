@@ -1,0 +1,26 @@
+<!--pages/addAddress/addAddress.wxml-->
+<view class='wrap'>
+  <view class="addshipaddress">
+    <input placeholder='收货人' placeholder-style='color:#999999;' value='{{receiver}}' class='' bindchange="getReceiver">
+    <button class='namereset' bindtap='namereset'>×</button>
+    </input>
+    <input placeholder='手机号码' placeholder-style='color:#999999;' value='{{receiverPhone}}' bindchange="getReceiverPhone">
+    <button class='namereset' bindtap='namereset'>×</button>
+    </input>
+    <picker bindchange="bindGenderChange" value="{{sex}}" range="{{gender}}"style='color: {{genderColor}};'>
+      <view class="picker">性别：{{gender[sex]}}</view>
+    </picker>
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" style='color: {{regionColor}};'>
+      <view class="picker">
+        {{region[0]}} {{region[1]}} {{region[2]}}
+      </view>
+    </picker>
+    <textarea placeholder='详细地址' placeholder-style='color:#999999;' bindinput="getReceiverAddress" value='{{receiverAddress}}'></textarea>
+  </view>
+  <view class='setDefaultAddress'>
+    <view>设置为默认地址</view>
+    <switch bindchange="switchChange" color='#0090FF' checked="{{isDefault}}" />
+  </view>
+
+  <view class='addshipadd od-bg-c-primary' bindtap='addshipadd'>保存收货地址</view>
+</view>

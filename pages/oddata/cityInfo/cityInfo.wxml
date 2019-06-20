@@ -1,0 +1,106 @@
+<view class='headerInfo'>
+  <image src='/images/city-bg.png' class='header-img'></image>
+  <view class='headerInfo-item'>
+    <view class='item-total'>选择平台：</view>
+     <radio-group class="radio-group" bindchange="radioChange">
+      <label wx:for="{{items}}" wx:key>
+        <radio value="{{item.name}}" checked="{{item.checked}}" disabled="{{item.value == '美团'}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+    <view class='headerInfo-item2'>
+      <view class='item-total'>选择城市:</view>
+    <view class="mode" bindtap='chooseAddress'>
+      <view class='addressInfo'>{{province == ''?'点此选择地区':province + '-' + city }}</view>
+    </view>
+  </view>
+  <button class='submitInfo'  bindtap='getCityInfo'>确认提交</button>
+</view>
+<view class='history-table-wrap'>
+  <view class='updatetime' wx:if="{{update_time !=''}}">更新时间:{{update_time}}</view>
+  <view class="table">
+    <view class="tr">
+      <view class="th th1">外卖商家总数</view>
+      <view class="th th2">最近月销量</view>
+      <view class="th th3">平均日销总量</view>
+    </view>
+    <view class="tr">
+      <view class="td td1">{{cityInfo.sum.count || 0}}</view>
+      <view class="td td2">{{cityInfo.sum.month || 0}}</view>
+      <view class="td td3">{{cityInfo.sum.day || 0}}</view>
+    </view>
+  </view>
+</view>
+<view class='chooseList'>
+  <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>品类细分</view>
+  <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>品牌排行</view>
+  <view class="chooseList-item3 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>商家详情</view>
+</view>
+<view class='item-pl'  wx:if="{{chooseItem == 0}}">
+  <view class='history-table-wrap wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">品类</view>
+        <view class="th th6">商家数</view>
+        <view class="th th7">月销总量</view>
+        <view class="th th8">日销销量</view>
+      </view>
+      <view class="tr" wx:for="{{cityInfo.details}}" wx:key>
+        <view class="td td5">{{item.classify}}</view>
+        <view class="td td6">{{item.count}}</view>
+        <view class="td td7">{{item.month}}</view>
+        <view class="td td8">{{item.day}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='item-pl'  wx:if="{{chooseItem == 1}}">
+  <view class='history-table-wrap wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">品牌名</view>
+        <view class="th th6">商家数</view>
+        <view class="th th7">月销总量</view>
+        <!-- <view class="th th8">日销销量</view> -->
+      </view>
+      <view class="tr" wx:for="{{cityInfo.brand}}" wx:key>
+        <view class="td td5">{{item.shop_name_short}}</view>
+        <view class="td td6">{{item.count}}</view>
+        <view class="td td7">{{item.sum}}</view>
+        <!-- <view class="td td8">{{item.day}}</view> -->
+      </view>
+    </view>
+  </view>
+</view>
+<view class='item-pl'  wx:if="{{chooseItem == 2}}">
+  <view class='history-table-wrap wrap2'>
+    <view class="table">
+      <view class="tr">
+        <view class="th th5">店铺名</view>
+        <view class="th th7">月销总量</view>
+        <view class="th th8">日销总量</view>
+        <view class="th th6">评分</view>
+      </view>
+      <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:{{heightInfo}}px;" class='shopInfo'>
+     <view class="tr" wx:for="{{sjxqList}}" wx:key>
+        <view class="td td5">{{item.store_name}}</view>
+        <view class="td td6">{{item.month}}</view>
+        <view class="td td7">{{item.day}}</view>
+        <view class="td td8">{{item.score}}</view>
+      </view>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+     
+    </view>
+  </view>
+</view>
+<view class="logo_ground">
+  <view class='footer'>
+    <view>如需下载数据请联系客服</view>
+  </view>
+</view>
+<area_picker_two isshow="{{isshow}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker_two>

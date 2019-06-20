@@ -1,0 +1,29 @@
+<!--副文本-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='content'>
+<view class='consultation'>
+  <view class='consultation-head'>
+    <image src='{{allInfo.user_photo}}' class='consultation-Img'></image>
+    <view class='consultation-headright'>
+      <view class='consultation-Name'>{{allInfo.username}}</view>
+      <view class='consultation-upInfo'>
+        <view class='consultation-Time'>{{allInfo.audit_at}} <text>发布于{{allInfo.address}}</text> </view>
+      </view>
+    </view>
+  </view>
+    <view class='consultation-total'>{{allInfo.title}}</view>
+     <view class='consultation-text'>{{allInfo.abstract}}</view>
+
+  <view class='consultation-imgList'>
+    <block wx:for="{{allInfo.photo}}" wx:for-item="items" wx:key>
+      <image class='consultation-imgListallInfo' src='{{items.url}}'></image>
+    </block>
+  </view>
+  </view>
+</view>
+<view class='detailInfo'>
+ <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>
+ 

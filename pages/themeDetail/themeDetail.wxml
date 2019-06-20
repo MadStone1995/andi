@@ -1,0 +1,43 @@
+<!--副文本-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='content'>
+<view class='consultation'>
+  <view class='consultation-head'>
+    <image src='{{allInfo.user_photo}}' class='consultation-Img'></image>
+    <view class='consultation-headright'>
+      <view class='consultation-Name'>{{allInfo.username}}</view>
+      <view class='consultation-upInfo'>
+        <view class='consultation-Time'>{{allInfo.audit_at}} <text>发布于{{allInfo.address}}</text> </view>
+      </view>
+    </view>
+  </view>
+    <view class='consultation-total'>{{allInfo.title}}</view>
+     <!-- <view class='consultation-text'>{{allInfo.abstract}}</view> -->
+
+  <view class='consultation-imgList'>
+    <block wx:for="{{allInfo.photo}}" wx:for-item="items" wx:key>
+      <image class='consultation-imgListallInfo' src='{{items.url}}'></image>
+    </block>
+  </view>
+  </view>
+    <view class='browseInfo'>
+      <image class='browseImg' src='/images/browse.png'></image>
+      <view class='browse-num'>{{allInfo.browse}}人浏览</view>
+      <view class='news-num'>{{allInfo.replys}}</view>
+      <image class='newsImg' src='/images/news.png'></image>
+      <view class='good-num'>{{allInfo.likes}}</view>
+      <image class='goodImg' src='/images/good.png'></image>
+      <view class='good-num'>{{allInfo.collection}}</view>
+      <image class='goodImg' src='/images/collection.png'></image>
+    </view>
+</view>
+<!-- <view class='detailInfo'>
+ <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view> -->
+<view class='submitInfo'>
+  <input class='submitInfo-input' bindinput='getContent' cursor-spacing='5' placeholder='发表评论'></input>
+  <view class='submitbtn' bindtap='submitContent'>发布</view>
+</view>
+ 

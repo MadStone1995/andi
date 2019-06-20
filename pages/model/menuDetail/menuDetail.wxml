@@ -1,0 +1,84 @@
+<!--副文本-->
+<import src="../../../wxParse/wxParse.wxml" />
+<view class='banner'>
+  <swiper class='swiper-box' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" duration="{{duration}}">
+    <block wx:for="{{allInfo.photo}}" wx:key>
+      <swiper-item>
+        <image class='swiper-img' src="{{item.url}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='menuInfo'>
+<view class='menuInfo-item'>
+  <view class='menuInfo-name'>{{allInfo.goods}}</view>
+  <view class='menuInfo-labels' wx:if="{{allInfo.labels}}">{{allInfo.labels}}</view>
+</view>
+<view class='menuInfo-item'>
+  <view class='item1'>
+    <image class='browseImg' src='/images/browse.png'></image>
+    <view class='menuInfo-seeNum'>{{allInfo.browse}}</view>
+  </view>
+ <view class='item2'>
+    <view class='news-num'>{{allInfo.replys}}</view>
+    <image class='newsImg' src='/images/news.png'></image>
+    <view class='good-num'>{{allInfo.likes}}</view>
+    <image class='goodImg' src='/images/good.png'></image>
+    <view class='good-num'>{{allInfo.collection}}</view>
+    <image class='goodImg' src='/images/collection.png'></image>
+  </view>
+</view>
+<view class='lineheight'></view>
+    
+</view>
+<view class='content'>
+<view class='consultation'>
+  <view class='consultation-head'>
+    <image src='{{allInfo.photo_url}}' class='consultation-Img'></image>
+    <view class='consultation-headright'>
+      <view class='consultation-Name'>{{allInfo.username}}</view>
+      <view class='consultation-upInfo'>
+        <view class='consultation-Time'>{{allInfo.audit_at}} <text>发布于{{allInfo.address}}</text> </view>
+      </view>
+    </view>
+  </view>
+    <!-- <view class='consultation-total'>{{allInfo.title}}</view>
+     <view class='consultation-text'>{{allInfo.abstract}}</view> -->
+
+  <!-- <view class='consultation-imgList'>
+    <block wx:for="{{allInfo.photo}}" wx:for-item="items" wx:key>
+      <image class='consultation-imgListallInfo' src='{{items.url}}'></image>
+    </block>
+  </view> -->
+  </view>
+</view>
+  <view class='lineheight'></view>
+  
+  <view class='material'>
+    <view class='material-total'> 
+      <view class='borderline'></view>
+    食材调料
+    <view class='borderline2'></view>
+    </view>
+    <view class='material-list'>
+    <block wx:for="{{allInfo.specification}}" wx:key>
+      <view class="material-item {{index % 2 == 0? '':'noright' }} {{allInfo.specification.length % 2 == 1 ? (index <allInfo.specification.length-1 ? '':'nobottom') :(index <allInfo.specification.length-2 ? '':'nobottom') }}">
+        <view class='material-name'>{{item.ingredientsName}}</view>
+        <view class='material-num'>{{item.ingredientsNum}}</view>
+      </view>
+    </block>
+    </view>
+  </view>
+    <view class='material'>
+      <view class='material-total'> 
+      <view class='borderline'></view>
+    烹饪步骤
+    <view class='borderline2'></view>
+    </view>
+    <view class='material-list noborder'>
+    <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+    </view>
+  </view>
+ 

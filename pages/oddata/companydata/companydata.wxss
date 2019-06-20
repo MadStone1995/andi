@@ -1,0 +1,149 @@
+page{
+  background-color: #F2F2F2;
+}
+.bannerView{
+  width:750rpx;
+  height:300rpx;
+ background:linear-gradient(180deg,rgba(250,197,175,1) 0%,rgba(250,197,175,0) 100%);
+}
+.bannerImg{
+  width:710rpx;
+  height:250rpx;
+  border-radius:10rpx;
+  margin: 20rpx 20rpx 30rpx 20rpx;
+}
+.chooseList{
+  width:750rpx;
+  height: 80rpx;
+  margin-bottom:20rpx;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: bold;
+  background-color: #fff;
+}
+.chooseList-item{
+  float: left;
+  height: 80rpx;
+  width: 249rpx;
+  background-color: #fff;
+  color: #333333;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.itemline{
+  float: left;
+  width: 0;
+  height: 40rpx;
+  border-left: 1rpx #F2F2F2 solid;
+  margin: 20rpx 0;
+}
+.chooseItem{
+  border-bottom: 3rpx #496DAA solid;
+  box-sizing: border-box;
+}
+.platList{
+  height: 80rpx;
+  width: 710rpx;
+  padding: 0 20rpx;
+}
+.platItem{
+  float: left;
+  width: 350rpx;
+  height: 80rpx;
+  background-color: #95B4E8;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  line-height: 80rpx;
+  text-align: center;
+}
+.shopInfo{
+  width: 710rpx;
+  padding: 0 20rpx;
+  margin-top: 30rpx;
+  height: 80rpx;
+}
+.shopInfo-item{
+  float: left;
+  width:222rpx;
+  height:80rpx;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(221,221,221,1);
+  box-shadow:0px 0px 5rpx 0px rgba(66,93,138,0.43);
+  border-radius:5rpx;
+  box-sizing: border-box;
+}
+.mright{
+  margin-right: 10rpx;
+}
+.mright2{
+  margin-right: 20rpx;
+}
+.choosePlat{
+  background-color: #496DAA;
+}
+.itemimg{
+  width: 50rpx;
+  height: 50rpx;
+  float: left;
+  margin: 15rpx;
+}
+.item-num{
+  float: left;
+  width: 120rpx;
+  height: 72rpx;
+  margin: 4rpx 0;
+}
+.num-total{
+  font-size: 22rpx;
+  color: #999999;
+
+}
+.num-detail{
+  font-size: 27rpx;
+  color: #333;
+}
+.table {
+  border-right: 0;
+  border-bottom: 0;
+  width: 710rpx;
+  margin: 20rpx;
+}
+.red{
+  color: #C90A0A;
+}
+.green{
+  color: #0BA91A;
+}
+.stateinfo{
+  float: right;
+}
+.tr {
+  width: 100%;
+  min-height: 70rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.th, .td {
+  padding: 5rpx;
+  border-bottom: 1rpx solid #dadada;
+  border-right: 1rpx solid #dadada;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.th {
+  font-weight: 800;
+  background-color: #496DAA;
+  font-size: 28rpx;
+  color: white;
+}
+
+.td {
+  font-size: 25rpx;
+  color: black;
+  background-color:white;
+}

@@ -1,0 +1,122 @@
+<!--index.wxml-->
+<view class='head'>
+  <image class='bg'src='https://xcx.od888.cn/static/fixed/images/index1.png'></image>
+</view>
+<view class='head1'>
+  <image class='bg1'src='https://xcx.od888.cn/static/fixed/images/index2.png'></image>
+  <view class='textInfo'>
+    <view class='textInfo-left'>
+      <view class='textInfo-leftItem'>社</view>
+      <view class='textInfo-leftItem'>区</view>
+      <view class='textInfo-leftItem'>宗</view>
+      <view class='textInfo-leftItem'>旨</view>
+    </view>   
+     <view class='textInfo-right'>
+      <view class='textInfo-rightItem'>公平		公正		公开</view>
+      <view class='textInfo-rightItem'>数据、信息绝对真实、不可篡改</view>
+      <view class='textInfo-rightItem'>人人为社区，社区为人人</view>
+      <view class='textInfo-rightItem'>参与即贡献，贡献得收益</view>
+     </view>
+  </view>
+ 
+</view>
+<view class='head2'>
+    <image class='bg2' src='https://xcx.od888.cn/static/fixed/images/index3.png'></image>
+    <view class='info-total'>
+      <view class='total-line1'></view>
+      <view class='total-text'>
+        <text>社</text>
+        <text>区</text>
+        <text>导</text>
+        <text>航</text>
+      </view>
+      <view class='total-line2'></view>
+    </view>
+    <view class='infoList'>
+      <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info1.png'></image>
+          <view class='item-total'>我想开店</view>
+          <view class='item-textList'>
+            <view class='xuanzhuan'></view><view class='text-info'>选址参考</view>
+            <view class='xuanzhuan'></view><view class='text-info'>品类筛选</view>
+            <view class='xuanzhuan'></view><view class='text-info'>安心加盟</view>
+          </view>
+      </view>
+        <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info2.png'></image>
+          <view class='item-total'>外卖运营</view>
+          <view class='item-textList'>
+            <view class='xuanzhuan'></view><view class='text-info'>店铺诊断</view>
+            <view class='xuanzhuan'></view><view class='text-info'>教程指导</view>
+            <view class='xuanzhuan'></view><view class='text-info'>安心代运营</view>
+          </view>
+      </view>
+      <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info3.png'></image>
+          <view class='item-total1'>社区资信</view>
+          <view class='item-textList1'>
+            <view class='xuanzhuan'></view><view class='text-info'>餐饮行业实时资讯</view>
+          </view>
+          <view class='item-textList1'>
+              <view class='xuanzhuan'></view><view class='text-info'>社区内信息共享</view>
+              <text decode="{{true}}">\n &nbsp; &nbsp; (门店转租、人员招聘、二手转让)</text>
+          </view>
+         
+      </view>
+    
+      <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info4.png'></image>
+          <view class='item-total'>底价采购</view>
+          <view class='item-textList2'>
+            <view class='xuanzhuan '></view><view class='text-info djtext'>厂家直销</view>
+            <view class='xuanzhuan '></view><view class='text-info djtext'>送货上门</view>
+            <view class='xuanzhuan '></view><view class='text-info djtext'>食品安全</view>
+             <view class='xuanzhuan '></view><view class='text-info djtext'>追根溯源</view>
+          </view>
+      </view>
+      <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info5.png'></image>
+          <view class='item-total3'>我爱学习</view>
+          <view class='item-textList3'>
+             <view class='item-textList3'>
+            <view class='xuanzhuan'></view><view class='text-info'>爆品菜谱——轻松学做菜</view>
+          </view>
+            <view class='item-textList3'>
+            <view class='xuanzhuan'></view><view class='text-info'>视频教程——自学搞定一切</view>
+          </view>
+          <view class='item-textList3' decode="{{true}}">
+              <view class='xuanzhuan'></view><view class='text-info'> 各类教程在线直播——</view>
+              <text decode="{{true}}">\n &nbsp; &nbsp; 产品研发、外卖运营、店铺直销</text>
+          </view>
+          </view>
+      </view>
+      <view class='infoList-item'>
+          <image class='infoList-itemimg' src='https://xcx.od888.cn/static/fixed/images/info6.png'></image>
+          <view class='item-total6'>外卖大数据</view>
+           <view class='item-textList3'>
+             <view class='item-textList3'>
+            <view class='xuanzhuan'></view><view class='text-info'>外卖行业的商情查询</view>
+          </view>
+            <view class='item-textList3'>
+            <view class='xuanzhuan'></view><view class='text-info'>大数据指导下的可行性建议</view>
+          </view>
+          <view class='item-textList3' decode="{{true}}">
+              <view class='xuanzhuan'></view><view class='text-info'> 外卖行业的各类大数据报告</view>
+          </view>
+          </view>
+      </view>
+    </view>
+      <button class='join' bindtap="toHome" >立即加入</button>
+</view>
+<!-- <view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即加入 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto" bindtap='toHome'>
+    <text class="user-motto">立即加入</text>
+  </view>
+</view> -->

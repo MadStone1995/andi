@@ -1,0 +1,82 @@
+<view class='headerInfo'>
+  <view class="my__header">
+  <view class='user'>
+     <image src="{{userInfo.photo_url || '/images/default.png'}}" class='header-img'></image>
+     <view class='user-info'>
+      <view class='user-name'>{{userInfo.name}}</view>
+      <view class='user-welcome'>欢迎回到od社区！</view>
+     </view>
+     <view class='qdview'  bindtap='toqiandao'>
+      <image class='qdimg' src='/images/my/qd.png'></image>
+      <view class='qdtext'>每日签到</view>
+     </view>
+  </view>
+  <view class='user-num'>
+    <view class='user-numItem rightBorder' bindtap='tomyyue'>
+      <image src='/images/my/qb.png'></image>
+      <view class='numItem-Info' >
+        <view class='numItem-text'>钱包余额</view>
+        <view class='numItem-num1'>{{userInfo.money || 0}}</view>
+      </view>
+    </view>
+     <view class='user-numItem' bindtap='tomyintegral'>
+      <image src='/images/my/jf.png'></image>
+        <view class='numItem-Info'>
+        <view class='numItem-text'>用户积分</view>
+        <view class='numItem-num2'>{{userInfo.integral || 0}}</view>
+      </view>
+    </view>
+  </view>
+    <!-- <view class='my__header-info'>
+      <image src='/images/default.png' class='my__header-img'></image>
+      <view class='user-name'>{{nickName}}</view>
+    </view> -->
+  </view>
+</view>
+<view class='navList'>
+  <view class='navList-item' bindtap='tomall'>
+    <image class='navList-img' src='/images/my/jfsc.png'></image>
+    <view class='navList-text'>积分商城</view>
+  </view>
+  <view class='navList-item' bindtap='torelease'>
+    <image class='navList-img' src='/images/my/wdfb.png'></image>
+    <view class='navList-text'>我的发布</view>
+  </view>
+  <view class='navList-item' bindtap='tocollections'>
+    <image class='navList-img' src='/images/my/wdsc.png'></image>
+    <view class='navList-text'>我的收藏</view>
+  </view>
+  <view class='navList-item' bindtap='toAddress'>
+    <image class='navList-img' src='/images/my/dzgl.png'></image>
+    <view class='navList-text'>地址管理</view>
+  </view>
+</view>
+<view class='funList'>
+<view class='funList-item' bindtap='towzjf'>
+    <image class='funList-img' src='/images/my/wzjf.png'></image>
+    <view class='funList-text'>玩转积分</view>
+    <image class='funList-jt' src='/images/my/jt.png'></image>
+  </view>
+   <view class='funList-item' bindtap='tosjrz'>
+    <image class='funList-img' src='/images/my/sjrz.png'></image>
+    <view class='funList-text'>服务商入驻</view>
+    <image class='funList-jt' src='/images/my/jt.png'></image>
+  </view>
+  <view class='funList-item' bindtap='tohelp'>
+    <image class='funList-img' src='/images/my/bzzx.png'></image>
+    <view class='funList-text'>帮助中心</view>
+    <image class='funList-jt' src='/images/my/jt.png'></image>
+  </view>
+  <button open-type='contact' class='buttonItem'>
+    <view class='funList-item'>
+      <image class='funList-img' src='/images/my/lxkf.png'></image>
+      <view class='funList-text'>联系客服</view>
+      <image class='funList-jt' src='/images/my/jt.png'></image>
+    </view>
+  </button>
+  <view class='funList-item' bindtap='toabout'>
+    <image class='funList-img' src='/images/my/gy.png'></image>
+    <view class='funList-text'>关于od商吧</view>
+    <image class='funList-jt' src='/images/my/jt.png'></image>
+  </view>
+</view>

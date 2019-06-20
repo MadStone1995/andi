@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "商圈分析",
+  "usingComponents": {
+    "area_picker": "/component/area_picker/area_picker"
+  }
+}

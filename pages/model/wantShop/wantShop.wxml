@@ -1,0 +1,133 @@
+<!--我想开店-->
+<view class='bannerView'>
+  <image src='https://xcx.od888.cn/static/fixed/images/wx-banner.png' class='bannerImg'></image>
+</view>
+<view class='chooseList'>
+  <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>品类查询</view>
+  <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>选址参考</view>
+  <view class="chooseList-item3 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>品牌数据</view>
+</view>
+<!-- 品类查询 -->
+<view class='addressItem' wx:if="{{chooseItem == 0}}">
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class='addressInfo'>
+        <view class='choose-total'>选择省市:</view>
+        <view class='choose-area'>{{region[0]}}</view>
+        <view class='choose-area'>{{region[1]}}</view>
+      </view>
+  </picker>
+  <view class='addressInfo'>
+    <view class='choose-total1'>选择品类:</view>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      <view class='detailaddress'>{{productType}}</view>
+    </view>
+  </picker>
+    <view class='submitAddress' bindtap='submitAddInfo'>提交查询</view>
+  </view>
+  <view class='plshuoming'>说明:以下数据展示该品类的商家详情(按销量降序排列)</view>
+  <view class='subResult' >
+  <scroll-view scroll-y bindscrolltolower="loadMoreShop"style="height:{{heightInfo}}px;" class='shopInfo'>
+    <block wx:for="{{shopList}}" wx:key>
+    <view class='shopItem'>
+      <view class='shopItem1'>
+        <view class='shopItemInfo1'>{{item.shop_name}}</view>
+      </view>
+      <view class='shopItem1'>
+        <view class='shopItemInfo pf' ><text>评分:</text> {{item.score}}</view>
+        <view class='shopItemInfo rxl'><text>日销量:</text> {{item.day}}</view>
+        <view class='shopItemInfo yxl'><text>月销量:</text> {{item.month}}</view>
+      </view>
+    </view>
+    </block>
+    <view class='loading' wx:if="{{loading}}">
+      <text class='loadMore'></text>
+      <text>努力加载中……</text>
+    </view>
+  </scroll-view>
+    </view>
+</view>
+<!-- 选址参考 -->
+<view class='addressItem' hidden="{{chooseItem != 1}}">
+   <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <view class='addressInfo'>
+        <view class='choose-total'>选择省市:</view>
+        <view class='choose-area'>{{region[0]}}</view>
+        <view class='choose-area'>{{region[1]}}</view>
+      </view>
+  </picker>
+  <view class='addressInfo'>
+    <view class='choose-total1'>详细地址:</view>
+    <input class='detailaddress' placeholder='请输入详细地址' bindinput='inputAddress' value='{{detailaddress}}'> </input>
+    <view class='submitAddress' bindtap='detailAddress'>提交查询</view>
+  </view>
+  <view class='saleItem'>
+    <view class='saleItem-map'>
+      <view class="img_box">
+      <map id="myMap"
+        markers="{{markers}}"
+        style="width:100%;height:100%;"
+        longitude="{{currentLo}}"
+        latitude="{{currentLa}}" scale='16'>
+      </map>
+      </view>
+      <view class='saleItem-info'>
+        <view class='sale-total'>区域餐饮商家数</view>
+        <view class='sale-num'>{{detailInfo.overview.number || 0}}</view>
+         <view class='sale-total'>月销总量</view>
+        <view class='sale-num'>{{detailInfo.overview.month || 0}}</view>
+         <view class='sale-total'>日销总量</view>
+        <view class='sale-num'>{{detailInfo.overview.day || 0}}</view>
+      </view>
+    </view>
+    <view class='detailItem' >
+      <view class='detailItem-total'>品类细分(市场详情)</view>
+      <view class='detailItem-info'>
+          <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+      </view>
+    </view>
+     <view class='detailItem'>
+      <view class='detailItem-total'>销量区间商家占比</view>
+      <view class='detailItem-info'>
+         <ec-canvas id="mychart-dom-pie3" canvas-id="mychart-pie3" ec="{{ ec3 }}" bind:init="echartInit"></ec-canvas>
+      </view>
+    </view>
+     <view class='detailItem' style='height:750rpx;'>
+      <view class='detailItem-total' >销量TOP10商家</view>
+      <view class='detailItem-info' style='height:700rpx;'>
+         <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec2 }}"></ec-canvas>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 品牌数据 -->
+<view class='ppInfo' hidden="{{chooseItem != 2}}">
+  <view class='addressItem2'>
+    <input class='ppName' bindinput='inputPp' placeholder-style='color:#333;' placeholder='请输入品牌名' value='{{ppName}}'></input>
+    <view class='select' wx:if="{{flag}}">
+      <block wx:for="{{menu}}" wx:key>
+        <view class='select-menu' bindtap='select' data-name='{{item.shop_name_short}}'>{{item.shop_name_short}}</view>
+      </block>
+    </view>
+    <view class='subbtn' bindtap='submitPp'>提交查询</view>
+  </view>
+    <view class='history-table-wrap'>
+      <view class="table">
+        <view class="tr">
+          <view class="th th5">全国商家总数</view>
+          <view class="th th6">月销总量</view>
+          <view class="th th8">日销销量</view>
+        </view>
+        <view class="tr">
+          <view class="td td5">{{ppSumInfo.count || 0}}</view>
+          <view class="td td6">{{ppSumInfo.month || 0}}</view>
+          <view class="td td7">{{ppSumInfo.day || 0}}</view>
+        </view>
+      </view>
+    </view>
+     <view id='detailItem-info3' class='detailItem-info3' style='height:700rpx;'>
+         <ec-canvas id="mychart-dom-bar4" canvas-id="mychart-bar4" ec="{{ ec4 }}"></ec-canvas>
+      </view>
+</view>
+ <area_picker_two isshow="{{isshow}}" bind:sureSelectArea="sureSelectAreaListener">
+</area_picker_two>

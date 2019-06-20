@@ -1,0 +1,60 @@
+<!--我爱学习-->
+<view class='pageInfo'>
+  <view class='bannerView'>
+    <image src='https://xcx.od888.cn/static/fixed/images/wa-banner.png' class='bannerImg'></image>
+  </view>
+  <view class='chooseList'>
+    <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>爆品菜谱</view>
+    <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>运营教程</view>
+  </view>
+  <!-- 爆品菜谱 -->
+  <view class="platform animated bounceInLeft" wx:if="{{chooseItem == 0}}">
+    <view class='searchBox'>
+      <image src='/images/search.png' class='searchImg'></image>
+      <input class='search-input' placeholder='输入关键词搜索菜谱' placeholder-style='color:#fff;' value='{{goodsName}}' bindinput='inputGoodName' bindconfirm="searchGoods"></input>
+    </view>
+  <view class='bannerWrap'>
+      <swiper class='bannerSwiper' previous-margin="95rpx" next-margin='95rpx' indicator-dots="true" indicator-color='#B5B5B5' indicator-active-color='#fff' interval='3000' duration='500' bindchange='swiperChange' circular='true'>
+        <block wx:for="{{imgUrls}}" wx:key>
+          <swiper-item>
+            <image class="{{index==xindex?'imageBanner':'imageBanner_small'}}" src="{{item}}" id='{{item.url}}'></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class='menuList'>
+    <view class='menuList-total'>
+      <view class='total-text'>最新菜谱</view>
+      <view class='total-text2' bindtap='torichMenu'>上传菜谱+</view>
+    </view>
+    <block wx:for="{{menuList}}" wx:key>
+         <view bindtap='toDetail' data-id='{{item.hotvideo_id}}' class="menuList-item {{index % 2 == 0 ? 'marginright':''}}">
+          <image src='{{item.photo[0].url}}' class='food-img'></image>
+          <view class='food-name'>{{item.goods}}</view>
+          <view class='food-area'>火爆地区:{{item.hot}}</view>
+          <view class='food-see'>浏览量{{item.browse}}</view>
+        </view>
+    </block>
+      <!-- <block wx:for="{{}}" wx:key>
+      </block> -->
+    </view>
+  </view>
+  <!-- 运营教程 -->
+  <view class="platform animated bounceInRight" wx:if="{{chooseItem == 1}}">
+    <view class='searchBox'>
+      <image src='/images/search.png' class='searchImg'></image>
+      <input class='search-input' placeholder='输入关键词搜索菜谱' placeholder-style='color:#fff;'></input>
+    </view>
+    <view class='courseList' style='height:{{scrollHeight}}px;'>
+      <block wx:for="{{imgUrls}}" wx:key>
+        <view class='courseList-item'>
+          <image src='https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640' class='courseItem-img'></image>
+          <view class='courseItem-total'>满减设置</view>
+          <view class='courseItem-Info'>专业大咖一步步教你如何设置满减活动才能在同行中脱颖而出，吸引顾客而又不损失盈利......</view>
+          <view class='courseItem-view'>浏览量：111</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+  <view class='submitXq animated bounceInRight' wx:if="{{chooseItem == 1}}">我要发布教程</view>

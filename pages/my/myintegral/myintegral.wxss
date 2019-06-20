@@ -1,0 +1,167 @@
+/* pages/my/myyue/myyue.wxss */
+.header{
+  width: 750rpx;
+  height: 290rpx;
+  position: relative;
+}
+.bannerImg{
+  width: 750rpx;
+  height: 290rpx;
+}
+.yue-cz{
+  width: 750rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+.num{
+  float:left;
+  color:#fff;
+  font-size:50rpx;
+  margin-left:30rpx;
+  font-weight:bold;
+  width:400rpx;
+}
+.tixian{
+  float: right;
+  width:190rpx;
+  height:50rpx;
+  color: #FF8629;
+  background:rgba(255,255,255,1);
+  border:1rpx solid rgba(255,255,255,1);
+  border-radius:25rpx;
+  margin-right: 80rpx;
+}
+.yue-info{
+  padding: 0 20rpx;
+  width: 710rpx;
+  float: left;
+}
+.info-total{
+  color: #333333;
+  font-size: 28rpx;
+  margin:20rpx 0;
+}
+.listItem{
+  float: left;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+.dian{
+  float: left;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background-color: #92D4FF;
+  margin: 20rpx 10rpx 0 0;
+}
+.item-date{
+  float: left;
+  width: 200rpx;
+  margin-right: 30rpx;
+}
+.item-total{
+  float: left;
+  width: 280rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-right: 30rpx;
+  overflow: hidden;
+}
+.item-num{
+  float: left;
+  width: 100rpx;
+}
+.sendInfo{
+  float: left;
+  width: 710rpx;
+  margin: 10rpx 20rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+.sendInfo-total{
+  /* float: left; */
+  width: 160rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.sendInfo-num{
+  float: left;
+  min-height: 80rpx;
+  width: 250rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  margin-right:20rpx;
+  margin-bottom: 15rpx;
+}
+.sendInfo-num2{
+  float: left;
+   width: 230rpx;
+  min-height: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx #eee solid;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  margin-right:20rpx;
+  /* margin-left: 160rpx; */
+  margin-bottom: 15rpx;
+}
+.sendInfo-btn{
+  float: left;
+  width: 160rpx;
+  height: 80rpx;
+  color: #fff;
+  background-color: #FDAD72;
+}
+.loading{
+  text-align: center;
+}
+@keyframes loading{
+   0%{
+     transform: rotate(0deg);
+     }
+    100%{
+     transform: rotate(360deg);
+     }
+ }
+.loadMore{
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: #fff;
+  width: 30rpx;
+  height: 30rpx;
+  border: 5rpx solid #9F9F9F;
+  border-top: 5rpx solid #fff;
+  animation: loading 1s infinite;
+  vertical-align:middle;
+  display:inline-block;
+  margin-right:10rpx;
+  margin-top:-5rpx;
+}
+.pNum{
+ float: left;
+  width: 710rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.pNum text{
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #FDAD72;
+  margin-left: 20rpx;
+ font-style: italic;
+}

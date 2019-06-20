@@ -1,0 +1,34 @@
+<!--pages/model/menuList/menuList.wxml-->
+<view class='header'>
+  <view class='searchBox'>
+      <image src='/images/search.png' class='searchImg'></image>
+      <input class='search-input' placeholder='输入关键词搜索菜谱' placeholder-style='color:#fff;' value='{{goodsName}}' bindinput='inputGoodName'></input>
+      <view class='search-text' bindtap='getMenuList'>搜索</view>
+    </view>
+</view>
+<view class='menuList'>
+  <block wx:for="{{menuList}}" wx:key>
+    <view class='menuList-item' data-id='{{item.hotvideo_id}}' bindtap='toDetail'>
+      <view class='goodsImg'>
+        <image src='{{item.photo[0].url}}'></image>
+      </view>
+      <view class='goodsInfo'>
+        <view class='goodsInfo-name'>{{item.goods}}</view>
+        <view class='goodsInfo-ht'>火爆地区:{{item.hot}}</view>
+        <view class='goodsInfo-see'>
+           <image class='browseImg' src='/images/browse.png'></image>
+            <view class='menuInfo-seeNum'>{{item.browse}}人浏览</view>
+        </view>
+            <!-- <view class='news-num'>{{item.replys}}</view>
+            <image class='newsImg' src='/images/news.png'></image> -->
+            <image class='goodImg' src='/images/good.png'></image>
+            <view class='good-num'>{{item.likes}}</view>
+            <image class='goodImg' src='/images/collection.png'></image>
+            <view class='good-num'>{{item.collection}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view wx:if="{{menuList.length == 0}}" class='menuList2'>
+  当前未收录您搜索的菜谱
+</view>

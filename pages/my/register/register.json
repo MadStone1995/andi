@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "用户注册",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "area_picker_two": "/component/area_picker_two/area_picker_two"
+  }
+}

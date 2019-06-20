@@ -1,0 +1,41 @@
+<!--pages/my/sjrz/sjrz.wxml-->
+<view class='sjInfo'>
+  <view class='info-item'>
+    <view class='itemName'>公司名称</view>
+    <input class='info-input' placeholder='请输入公司名称'>
+    </input>
+  </view>
+   <view class='info-item'>
+    <view class='itemName'>负责人姓名</view>
+    <input class='info-input' placeholder='请输入负责人姓名'>
+    </input>
+  </view>
+   <view class='info-item'>
+    <view class='itemName'>联系电话</view>
+    <input class='info-input' placeholder='请输入联系电话'>
+    </input>
+  </view>
+    <view class='info-item'>
+    <view class='itemName'>公司地址</view>
+    <input class='info-input' placeholder='请输入公司地址'>
+    </input>
+  </view>
+  <view class='info-item'>
+    <view class='itemName'>服务商类别</view>
+    <checkbox-group bindchange="checkboxChange" class='info-input'>
+      <label class="checkbox checkboxtext" wx:for="{{items}}" wx:key>
+        <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
+  </view>
+  <view>
+  <view class='imgtotal'>上传凭证:(公司营业执照/公司实拍/个人身份证等证明材料)</view>
+    <block wx:for="{{imgPaths}}" wx:key="{{index}}">
+      <view class='imgItem'>
+        <image src='{{item.url}}' class="uploadImg" data-id='{{index}}' bindlongtap='deleteImg'></image>
+      </view>
+    </block>
+    <view class='addImg' bindtap='uploadImg'>+</view>
+  </view>
+</view>
+  <view class='submitInfo'>提交上传</view>

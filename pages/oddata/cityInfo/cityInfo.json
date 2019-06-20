@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "城市概况",
+  "usingComponents": {
+    "area_picker_two": "/component/area_picker_two/area_picker_two"
+  }
+}

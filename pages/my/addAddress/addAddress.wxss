@@ -1,0 +1,76 @@
+/* pages/addAddress/addAddress.wxss */
+page{
+  background-color: #F0F4F7;
+}
+.wrap {
+  background: #f8f8f8;
+}
+
+.addshipaddress {
+  background: #fff;
+  padding-left: 15px;
+  font-size: 14px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+}
+
+.addshipaddress input {
+  height: 50px;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.addshipaddress picker {
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #e9e9e9;
+  position: relative;
+}
+
+.addshipaddress picker::after {
+  content: '>';
+  color: #ddd;
+  position: absolute;
+  right: 15px;
+  top: 0;
+}
+
+.addshipaddress textarea {
+  padding: 15px 0;
+  height: 82px;
+  width: 100%;
+}
+
+.setDefaultAddress {
+  height: 50px;
+  background: rgba(255, 255, 255, 1);
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+  font-size: 14px;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: rgba(34, 34, 34, 1);
+  align-items: center;
+}
+
+.setDefaultAddress switch {
+  width: 51px;
+  height: 31px;
+}
+
+.addshipadd {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 50px;
+  text-align: center;
+   background-color:#387beb;
+}

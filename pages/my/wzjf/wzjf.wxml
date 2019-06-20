@@ -1,0 +1,77 @@
+<view class='allpage'>
+  <view class='content1'>
+    <view class='content1-total'>积分的用途（社区内唯一支付工具）</view>
+    <view class='content1-info'>
+      <view class='content1-infoItem'>1、无限制的查询数据，可用积分（我要开店、外卖大数据、数据中心等模块）</view>
+      <view class='content1-infoItem'>2、使用各种服务商提供的服务或产品，可用积分（外卖运营、底价采购、我爱学习、安心加盟、我的店铺等）</view>
+      <view class='content1-infoItem'>3、积分商城内使用，可直接兑换任意实物及不定期的超级大礼包，可支付快递费用</view>
+      <view class='content1-infoItem'>4、可参与od商吧社区收益的季度分红（即一定量的积分按一定的比例兑换成余额，余额可提现）</view>
+      <image src='/images/liwu.png' class='content1-img'></image>
+    </view>
+  </view>
+  <view class='content2'>
+    <view class='content2-total'>积分的获取（参与即可得）</view>
+    <view class='content2-info'>
+      <view class='content2-infoItem' bindtap='toregister'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>1.注册即送</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>马上注册 </view>
+        </view>
+        <view class='infoItem-text'>注册成为od商吧的用户即可获赠20个积分。</view>
+      </view>
+      <view class='content2-infoItem' bindtap='toqiandao'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>2.每日签到</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>去签到 </view>
+        </view>
+        <view class='infoItem-text'>注册用户可以通过商吧的每日签到获得2个积分。</view>
+      </view>
+      <view class='content2-infoItem'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>3.好友分享</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <button open-type='share' class='infoItem-view-text'>去分享 </button>
+        </view>
+        <view class='infoItem-text'>分享给好友（打开）即送（送20分，被分享者只核算一次）</view>
+      </view>
+      <view class='content2-infoItem moreheight'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>4.od商吧的社区活动</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>我的帖子 </view>
+        </view>
+        <view class='infoItem-text'>参与社区内活动即送（发布、点赞、收藏统一送3分，每日上 限15分）</view>
+      </view>
+      <view class='content2-infoItem'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>5.积分返利</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>查看规则 </view>
+        </view>
+        <view class='infoItem-text'>商吧内使用积分消费即可返还20%积分</view>
+      </view>
+      <view class='content2-infoItem'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>6.余额兑换积分</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>我的余额 </view>
+        </view>
+        <view class='infoItem-text'>土豪可用：余额/积分=1/10</view>
+      </view>
+      <view class='content2-infoItem noborder'>
+        <view class='infoItem-view'>
+          <view class='infoItem-view-total'>7、社区内不定期推广活动</view>
+            <image class='jtimg' src='/images/my/jt.png'></image>
+          <view class='infoItem-view-text'>近期活动 </view>
+        </view>
+        <view class='infoItem-text'>活动详情请留意活动彩页</view>
+      </view>
+    </view>
+  </view>
+  <view class='notice'>
+    (积分的使用和获取规则最终解释权归平台运营商所有, 如有问题可联系客服 )
+  <button open-type='contact' class='sendmsg'>联系客服</button>
+  </view>
+</view>

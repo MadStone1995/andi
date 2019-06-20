@@ -1,0 +1,128 @@
+/* pages/my/wzjf/wzjf.wxss */
+button {
+  background-color: #fff;
+  line-height: 85rpx;
+  padding: 0;
+  font-size: 28rpx;
+  border-radius: 0;
+}
+
+button::after {
+  border: none;
+}
+
+.button-hover {
+  background-color: #fff;
+}
+.allpage{
+  width: 100%;
+  background:linear-gradient(30deg,rgba(233,17,61,1) 0%,rgba(255,202,26,1) 100%);
+}
+.content1{
+  width: 710rpx;
+  padding: 30rpx 20rpx;
+}
+.content1-total{
+  font-size: 30rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.content1-info{
+  background-color: #fff;
+  width: 670rpx;
+  height: 360rpx;
+  font-size: 26rpx;
+  color: #333;
+  padding: 20rpx;
+  line-height: 45rpx;
+  position: relative;
+}
+.content1-img{
+  position: absolute;
+  width: 158rpx;
+  height: 123rpx;
+  bottom: -64rpx;
+  right: 0;
+}
+.content2{
+  width: 710rpx;
+  padding: 30rpx 20rpx;
+}
+.content2-total{
+  font-size: 30rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.content2-info{
+  background-color: #fff;
+  width: 710rpx;
+  height: 906rpx;
+  font-size: 26rpx;
+  color: #333;
+  padding: 20rpx 0;
+  line-height: 45rpx;
+}
+.jtimg{
+  float: right;
+  width: 14rpx;
+  height: 24rpx;
+  margin-top: 25rpx;
+  margin-left: 10rpx;
+}
+.content2-infoItem{
+  width: 710rpx;
+  height: 130rpx;
+  border-bottom: 1rpx #D1D1D1 solid;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}
+.infoItem-view-total{
+  color: #333;
+  font-size: 28rpx;
+  float: left;
+  width: 350rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.infoItem-view-text{
+  float: right;
+  color: #666;
+  font-size: 24rpx;
+   height: 70rpx;
+  line-height: 70rpx;
+}
+.infoItem-text{
+  float: left;
+  width: 100%;
+  line-height: 45rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.moreheight{
+  height: 155rpx;
+}
+.noborder{
+  border: none;
+}
+.notice{
+  padding: 20rpx 0;
+  margin-left: 20%;
+  width: 60%;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 40rpx;
+}
+.sendmsg{
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 300rpx;
+  border-radius: 10rpx;
+  color: #666;
+}

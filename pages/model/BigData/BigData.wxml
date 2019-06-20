@@ -1,0 +1,92 @@
+<!--外卖大数据-->
+<view class='bannerView'>
+  <image src='{{imgsrc}}' class='bannerImg'></image>
+</view>
+<view class='chooseList'>
+  <view class="chooseList-item1 {{chooseItem==0?'chooseItem':''}}" data-type='0' bindtap='chooseType'>城市总览</view>
+  <view class="chooseList-item2 {{chooseItem==1?'chooseItem':''}}" data-type='1' bindtap='chooseType'>品类报告</view>
+  <view class="chooseList-item3 {{chooseItem==2?'chooseItem':''}}" data-type='2' bindtap='chooseType'>品牌概况</view>
+</view>
+<!-- 城市概况 -->
+<view class='cityInfo animated bounceInLeft' hidden="{{chooseItem != 0}}">
+    <view class='history-table-wrap'>
+      <view class="table">
+          <view class="tr">
+            <view class="th th5">全国商家总数</view>
+            <view class="th th6">全国月销总量</view>
+            <!-- <view class="th th7">月销总量</view> -->
+            <view class="th th8">全国日销销量</view>
+          </view>
+          <view class="tr">
+            <view class="td td5">{{cityInfo.sum.count || 0}}</view>
+            <view class="td td6">{{cityInfo.sum.month || 0}}</view>
+            <view class="td td7">{{cityInfo.sum.day || 0}}</view>
+            <!-- <view class="td td8">{{item.rxl}}</view> -->
+          </view>
+      </view>
+    </view>
+  <view class='cityTable-total'>一线城市及直辖市</view>
+   <view class='detailItem-info' id='detailItem-info1'>
+          <ec-canvas id="mychart-dom-bar1" canvas-id="mychart-bar1" ec="{{ ec }}"></ec-canvas>
+    </view>
+     <view class='history-table-wrap'>
+      <view class="table">
+          <view class="tr">
+            <view class="th th5">省份</view>
+            <view class="th th6">商家数</view>
+            <view class="th th7">月销总量(万)</view>
+            <view class="th th8">日销总量(万)</view>
+          </view>
+          <view class="tr"  wx:for="{{cityInfo.provinces}}" wx:key >
+            <view class="td td5">{{item.name || 0}}</view>
+            <view class="td td6">{{item.number || 0}}</view>
+            <view class="td td7">{{item.month || 0}}</view>
+            <view class="td td8">{{item.day || 0}}</view>
+          </view>
+      </view>
+    </view>
+</view>
+<!-- 品类报告 -->
+<view class='cityInfo animated bounceInRight' hidden="{{chooseItem != 1}}">
+  <view class='detailItem-info' id='detailItem-info2'>
+          <ec-canvas id="mychart-dom-bar2" canvas-id="mychart-bar2" ec="{{ ec1 }}"></ec-canvas>
+    </view>
+</view>
+<!-- 品牌监测 -->
+<view class='cityInfo animated bounceInRight' hidden="{{chooseItem != 2}}">
+ <view class='history-table-wrap'>
+      <view class="table">
+          <view class="tr">
+            <view class="th th6">全国品牌数</view>
+            <view class="th th5"><text>品牌商家总数</text></view>
+            <!-- <view class="th th7">月销总量</view> -->
+            <view class="th th8">全国销量</view>
+          </view>
+          <view class="tr">
+            <view class="td td7">{{ppquanguo.brand || 0}}</view>
+            <view class="td td5">{{ppquanguo.shops || 0}}</view>
+            <view class="td td6">{{ppquanguo.sales || 0}}</view>
+            <!-- <view class="td td8">{{item.rxl}}</view> -->
+          </view>
+      </view>
+    </view>
+  <view class='detailItem-info' id='detailItem-info3'>
+          <ec-canvas id="mychart-dom-bar3" canvas-id="mychart-bar3" ec="{{ ec2 }}"></ec-canvas>
+    </view>
+     <view class='history-table-wrap'>
+      <view class="table">
+          <view class="tr">
+            <view class="th th5">品牌</view>
+            <view class="th th6">商家数</view>
+            <view class="th th7">月销总量</view>
+            <!-- <view class="th th8">日销总量(万)</view> -->
+          </view>
+          <view class="tr"  wx:for="{{ppInfo}}" wx:key >
+            <view class="td td5">{{item.shop_name_short || 0}}</view>
+            <view class="td td6">{{item.count || 0}}</view>
+            <view class="td td7">{{item.sum || 0}}</view>
+            <!-- <view class="td td8">{{item.day || 0}}</view> -->
+          </view>
+      </view>
+    </view>
+</view>
